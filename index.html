@@ -591,7 +591,9 @@ img{display:block;max-width:100%}
       </div>
 
       <!-- FORM STATE -->
-      <form id="interest-form" novalidate aria-label="Register your interest in TaleBuzzer">
+      <form id="interest-form" name="interest-form" data-netlify="true" netlify-honeypot="bot-field" novalidate aria-label="Register your interest in TaleBuzzer">
+        <input type="hidden" name="form-name" value="interest-form">
+        <input type="hidden" name="bot-field" style="display:none">
         <div class="form-grid">
 
           <div class="fg" id="g-fn">
@@ -888,8 +890,12 @@ form.addEventListener('submit', async e=>{
   subBtn.disabled=true;
   subLbl.style.display='none';
   subSpin.style.display='block';
-  /* Replace with your real API endpoint */
-  await new Promise(r=>setTimeout(r,1600));
+  const formData = new FormData(form);
+  await fetch('/', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+    body: new URLSearchParams(formData).toString()
+  });
   form.style.display='none';
   formOk.style.display='block';
   subBtn.disabled=false;
