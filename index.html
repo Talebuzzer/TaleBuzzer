@@ -8,9 +8,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,700;9..144,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
-
 <style>
-/* ─── RESET & TOKENS ─────────────────────────────────────── */
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
 :root{
@@ -19,22 +17,21 @@ html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
   --ink:#0d1117;--ink-mid:#334155;--ink-soft:#64748b;
   --white:#ffffff;--off:#fafaf8;--border:#e8e4dc;
   --r:14px;--r-lg:22px;--r-xl:32px;
-  --shadow:0 2px 12px rgba(0,0,0,.06),0 1px 3px rgba(0,0,0,.08);
-  --shadow-md:0 8px 32px rgba(0,0,0,.08),0 2px 8px rgba(0,0,0,.06);
+  --shadow:0 2px 12px rgba(0,0,0,.06);
+  --shadow-md:0 8px 32px rgba(0,0,0,.08);
   --shadow-lg:0 24px 64px rgba(0,0,0,.1),0 8px 24px rgba(0,0,0,.06);
   --font-d:'Fraunces',Georgia,serif;
   --font-b:'DM Sans',system-ui,sans-serif;
   --ease:cubic-bezier(.22,1,.36,1);
 }
 body{font-family:var(--font-b);color:var(--ink);background:var(--white);overflow-x:hidden;line-height:1.65}
-img{display:block;max-width:100%}
 ::-webkit-scrollbar{width:5px}
 ::-webkit-scrollbar-track{background:var(--off)}
 ::-webkit-scrollbar-thumb{background:var(--honey);border-radius:99px}
 
-/* ─── NAV ─────────────────────────────────────────────────── */
+/* NAV */
 .nav{position:fixed;inset:0 0 auto;z-index:200;padding:22px 0;transition:all .45s var(--ease)}
-.nav.stuck{background:rgba(255,255,255,.94);backdrop-filter:blur(18px);padding:12px 0;box-shadow:0 1px 0 var(--border),0 4px 24px rgba(0,0,0,.05)}
+.nav.stuck{background:rgba(255,255,255,.95);backdrop-filter:blur(18px);padding:12px 0;box-shadow:0 1px 0 var(--border),0 4px 24px rgba(0,0,0,.05)}
 .nav-wrap{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
 .logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--font-d);font-weight:900;font-size:1.2rem;color:var(--ink)}
 .logo-bee{display:inline-block;animation:bee-bob 3.5s ease-in-out infinite;font-size:1.4rem}
@@ -46,30 +43,30 @@ img{display:block;max-width:100%}
 .burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;border-radius:8px}
 .burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
 
-/* ─── MOBILE DRAWER ───────────────────────────────────────── */
+/* MOBILE DRAWER */
 .drawer{display:none;position:fixed;inset:0;z-index:300;background:var(--white);flex-direction:column;padding:28px;transform:translateX(100%);transition:transform .35s var(--ease)}
 .drawer.open{transform:translateX(0)}
 .drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
-.drawer-close{background:none;border:none;font-size:1.5rem;cursor:pointer;padding:4px;color:var(--ink)}
+.drawer-close{background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink)}
 .drawer-links{list-style:none;display:flex;flex-direction:column;gap:2px}
 .drawer-links a{display:block;padding:14px 16px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:500;font-size:1.05rem;transition:background .18s}
 .drawer-links a:hover{background:#f6f5f3}
 .drawer-links .d-cta{color:var(--honey-dark);font-weight:700}
 
-/* ─── BEE CANVAS ──────────────────────────────────────────── */
+/* BEE CANVAS */
 #bees{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.3}
 
-/* ─── HERO ────────────────────────────────────────────────── */
+/* HERO */
 .hero{min-height:100svh;display:flex;align-items:center;padding:140px 28px 90px;position:relative;overflow:hidden;background:linear-gradient(150deg,var(--honey-pale) 0%,#fefcf8 40%,var(--sky-pale) 100%)}
 .hero::before{content:'';position:absolute;top:-15%;right:-8%;width:650px;height:650px;border-radius:50%;background:radial-gradient(circle at center,rgba(245,158,11,.13),transparent 68%);animation:orb 8s ease-in-out infinite}
 .hero::after{content:'';position:absolute;bottom:-15%;left:-8%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at center,rgba(14,165,233,.1),transparent 68%);animation:orb 10s ease-in-out infinite reverse}
 .hero-grid{max-width:1180px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:1}
-.hero-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.28);color:#92400e;font-size:.78rem;font-weight:700;letter-spacing:.02em;padding:5px 14px;border-radius:99px;margin-bottom:22px;animation:fadeUp .6s var(--ease) both}
+.hero-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.28);color:#92400e;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:99px;margin-bottom:22px;animation:fadeUp .6s var(--ease) both}
 .hero h1{font-family:var(--font-d);font-size:clamp(2.3rem,4.8vw,3.8rem);font-weight:900;line-height:1.08;color:var(--ink);animation:fadeUp .65s var(--ease) .08s both}
 .hero h1 em{font-style:normal;background:linear-gradient(130deg,var(--honey),var(--honey-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
 .hero-sub{margin-top:18px;font-size:1.07rem;color:var(--ink-mid);max-width:480px;animation:fadeUp .65s var(--ease) .16s both}
 
-/* live demo */
+/* LIVE DEMO */
 .demo-wrap{margin-top:32px;animation:fadeUp .65s var(--ease) .24s both}
 .demo-label{font-size:.83rem;font-weight:600;color:var(--ink-mid);margin-bottom:10px;display:flex;align-items:center;gap:6px}
 .demo-label::before{content:'✦';color:var(--honey)}
@@ -79,15 +76,14 @@ img{display:block;max-width:100%}
 .demo-row input::placeholder{color:#a0aec0}
 .demo-btn{padding:15px 22px;background:var(--honey);color:var(--white);border:none;font-size:.9rem;font-weight:700;cursor:pointer;font-family:var(--font-b);transition:background .2s;white-space:nowrap}
 .demo-btn:hover{background:var(--honey-dark)}
-.demo-preview{margin-top:14px;font-size:.87rem;line-height:1.65;color:var(--ink-mid);border-left:3px solid var(--honey);padding:10px 14px;background:rgba(245,158,11,.05);border-radius:0 8px 8px 0;display:none;font-style:italic;max-width:460px;animation:fadeUp .4s var(--ease) both}
+.demo-preview{margin-top:14px;font-size:.87rem;line-height:1.65;color:var(--ink-mid);border-left:3px solid var(--honey);padding:10px 14px;background:rgba(245,158,11,.05);border-radius:0 8px 8px 0;display:none;font-style:italic;max-width:460px}
 .demo-preview .dn{font-style:normal;color:var(--honey-dark);font-weight:700}
 .cursor{display:inline-block;width:2px;height:.9em;background:var(--honey);vertical-align:text-bottom;margin-left:1px;animation:blink .7s step-end infinite}
-
 .hero-trust{margin-top:22px;display:flex;align-items:center;gap:12px;font-size:.83rem;color:var(--ink-soft);animation:fadeUp .65s var(--ease) .32s both}
 .avatars{display:flex}
 .av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#fde68a,#fbbf24);border:2px solid var(--white);margin-right:-9px;display:flex;align-items:center;justify-content:center;font-size:.85rem}
 
-/* story card */
+/* STORY CARD */
 .card-side{display:flex;justify-content:center;align-items:center;animation:fadeUp .8s var(--ease) .15s both}
 .story-card{background:var(--white);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);padding:28px;width:100%;max-width:380px;border:1px solid rgba(245,158,11,.14);animation:cardFloat 5.5s ease-in-out infinite;position:relative}
 .story-card::before{content:'';position:absolute;inset:-1px;border-radius:calc(var(--r-xl) + 1px);z-index:-1;background:linear-gradient(135deg,rgba(245,158,11,.18),rgba(14,165,233,.08))}
@@ -102,7 +98,7 @@ img{display:block;max-width:100%}
 .sc-fill{height:100%;background:linear-gradient(90deg,var(--honey),var(--honey-dark));border-radius:99px;width:0;transition:width 1.6s var(--ease)}
 .sc-bees{font-size:.78rem;font-weight:700;color:#92400e;background:rgba(245,158,11,.1);padding:4px 10px;border-radius:99px}
 
-/* ─── STATS ───────────────────────────────────────────────── */
+/* STATS */
 .stats{background:var(--ink);padding:36px 28px}
 .stats-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;text-align:center}
 .stat{position:relative}
@@ -110,7 +106,7 @@ img{display:block;max-width:100%}
 .stat-n{font-family:var(--font-d);font-size:2.1rem;font-weight:900;color:var(--honey);display:block;line-height:1}
 .stat-l{font-size:.78rem;color:#64748b;margin-top:4px;font-weight:500}
 
-/* ─── SECTIONS ────────────────────────────────────────────── */
+/* SECTIONS */
 .sec{padding:100px 28px}
 .sec-in{max-width:1180px;margin:0 auto}
 .sec-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);margin-bottom:10px}
@@ -118,7 +114,7 @@ img{display:block;max-width:100%}
 .sec-h{font-family:var(--font-d);font-size:clamp(1.9rem,4vw,2.9rem);font-weight:900;line-height:1.12;color:var(--ink);max-width:640px}
 .sec-sub{color:var(--ink-mid);font-size:1rem;max-width:540px;margin-top:12px}
 
-/* ─── REVEAL ──────────────────────────────────────────────── */
+/* REVEAL */
 .rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .rv.on{opacity:1;transform:none}
 .rv-l{opacity:0;transform:translateX(-24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
@@ -126,7 +122,7 @@ img{display:block;max-width:100%}
 .rv-r{opacity:0;transform:translateX(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
 .rv-r.on{opacity:1;transform:none}
 
-/* ─── HOW IT WORKS ────────────────────────────────────────── */
+/* HOW IT WORKS */
 .bg-off{background:var(--off)}
 .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
 .steps::before{content:'';position:absolute;top:34px;left:calc(12.5% + 18px);right:calc(12.5% + 18px);height:2px;background:linear-gradient(90deg,var(--honey),var(--sky));border-radius:2px}
@@ -137,7 +133,7 @@ img{display:block;max-width:100%}
 .step h3{font-family:var(--font-d);font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:7px}
 .step p{font-size:.86rem;color:var(--ink-mid);line-height:1.65}
 
-/* ─── FEATURES ────────────────────────────────────────────── */
+/* FEATURES */
 .feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:58px}
 .feat{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;transition:all .3s var(--ease);position:relative;overflow:hidden;cursor:default}
 .feat::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,158,11,.04),rgba(14,165,233,.04));opacity:0;transition:opacity .3s}
@@ -148,7 +144,7 @@ img{display:block;max-width:100%}
 .feat h3{font-family:var(--font-d);font-weight:700;font-size:.97rem;color:var(--ink);margin-bottom:7px}
 .feat p{font-size:.86rem;color:var(--ink-mid);line-height:1.65}
 
-/* ─── PRICING ─────────────────────────────────────────────── */
+/* PRICING */
 .prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:58px;align-items:start}
 .price-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r-lg);padding:30px;transition:all .3s var(--ease);position:relative}
 .price-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
@@ -167,7 +163,7 @@ img{display:block;max-width:100%}
 .pb-line{background:#f5f4f1;color:var(--ink)}
 .pb-line:hover{background:#eeede9}
 
-/* ─── TESTIMONIALS ────────────────────────────────────────── */
+/* TESTIMONIALS */
 .testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:58px}
 .testi{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;transition:all .3s}
 .testi:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
@@ -178,7 +174,7 @@ img{display:block;max-width:100%}
 .testi-name{font-weight:700;font-size:.88rem;color:var(--ink)}
 .testi-role{font-size:.76rem;color:var(--ink-soft);margin-top:1px}
 
-/* ─── SCHOOLS ─────────────────────────────────────────────── */
+/* SCHOOLS */
 .schools-sec{background:linear-gradient(145deg,#0a0f1e,#131c31);padding:100px 28px}
 .school-in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
 .school-eye{color:#7dd3fc}
@@ -200,7 +196,7 @@ img{display:block;max-width:100%}
 .metric-bar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
 .metric-fill{height:100%;background:linear-gradient(90deg,var(--honey),var(--sky));border-radius:2px;width:0;transition:width 1.5s var(--ease)}
 
-/* ─── INTEREST FORM ───────────────────────────────────────── */
+/* INTEREST FORM */
 .form-sec{background:linear-gradient(150deg,var(--honey-pale),#fefcf8 50%,var(--sky-pale));padding:100px 28px;position:relative;overflow:hidden}
 .form-sec::before{content:'';position:absolute;top:-20%;right:-10%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.08),transparent 68%)}
 .form-in{max-width:740px;margin:0 auto;text-align:center;position:relative;z-index:1}
@@ -209,30 +205,26 @@ img{display:block;max-width:100%}
 .fg{display:flex;flex-direction:column;gap:5px}
 .fg.full{grid-column:1/-1}
 .fg label{font-size:.83rem;font-weight:600;color:var(--ink)}
-.fg label .req{color:var(--honey)}
+.req{color:var(--honey)}
 .fi,.fs,.ft{padding:12px 15px;border:2px solid var(--border);border-radius:10px;font-size:.93rem;font-family:var(--font-b);color:var(--ink);background:var(--white);outline:none;transition:all .2s;width:100%}
 .fi:focus,.fs:focus,.ft:focus{border-color:var(--honey);box-shadow:0 0 0 4px rgba(245,158,11,.1)}
-.fi.err,.fs.err,.ft.err{border-color:#ef4444}
 .fs{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:15px;padding-right:38px}
 .ft{resize:vertical;min-height:96px;line-height:1.6}
-.ferr{font-size:.76rem;color:#ef4444;margin-top:3px;display:none}
-.has-err .ferr{display:block}
 .cb-row{display:flex;align-items:flex-start;gap:9px}
 .cb{width:17px;height:17px;accent-color:var(--honey);cursor:pointer;flex-shrink:0;margin-top:2px}
 .cb-lbl{font-size:.83rem;color:var(--ink-mid);line-height:1.55}
 .cb-lbl a{color:var(--sky)}
-.sub-btn{width:100%;padding:15px;background:var(--honey);color:var(--white);border:none;border-radius:11px;font-size:.97rem;font-weight:700;font-family:var(--font-b);cursor:pointer;transition:all .3s var(--ease);display:flex;align-items:center;justify-content:center;gap:8px;position:relative;overflow:hidden;margin-top:6px}
-.sub-btn::after{content:'';position:absolute;top:50%;left:50%;width:0;height:0;background:rgba(255,255,255,.18);border-radius:50%;transform:translate(-50%,-50%);transition:.5s}
-.sub-btn:hover::after{width:320px;height:320px}
+.sub-btn{width:100%;padding:15px;background:var(--honey);color:var(--white);border:none;border-radius:11px;font-size:.97rem;font-weight:700;font-family:var(--font-b);cursor:pointer;transition:all .25s var(--ease);margin-top:6px}
 .sub-btn:hover{background:var(--honey-dark);transform:translateY(-2px);box-shadow:0 8px 26px rgba(245,158,11,.38)}
-.sub-btn:disabled{opacity:.65;cursor:not-allowed;transform:none;box-shadow:none}
-.spin{width:18px;height:18px;border:2.5px solid rgba(255,255,255,.3);border-top-color:var(--white);border-radius:50%;animation:spin .75s linear infinite;display:none}
-.form-ok{display:none;text-align:center;padding:48px 16px}
-.ok-ico{font-size:3.2rem;display:block;margin-bottom:14px;animation:bounceIn .6s var(--ease)}
-.form-ok h3{font-family:var(--font-d);font-weight:900;font-size:1.6rem;color:var(--ink);margin-bottom:8px}
-.form-ok p{color:var(--ink-mid);font-size:.93rem}
 
-/* ─── FINAL CTA ───────────────────────────────────────────── */
+/* SUCCESS BANNER */
+.success-banner{display:none;background:var(--white);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);padding:56px 44px;border:1px solid rgba(245,158,11,.14);text-align:center;margin-top:38px}
+.success-banner.show{display:block}
+.ok-ico{font-size:3.2rem;display:block;margin-bottom:14px;animation:bounceIn .6s var(--ease)}
+.success-banner h3{font-family:var(--font-d);font-weight:900;font-size:1.6rem;color:var(--ink);margin-bottom:8px}
+.success-banner p{color:var(--ink-mid);font-size:.93rem}
+
+/* FINAL CTA */
 .cta-sec{background:var(--ink);text-align:center;padding:100px 28px}
 .cta-in{max-width:620px;margin:0 auto}
 .cta-bee{font-size:2.8rem;display:block;margin-bottom:14px;animation:bee-bob 3.5s ease-in-out infinite}
@@ -245,7 +237,7 @@ img{display:block;max-width:100%}
 .btn-b:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.05)}
 .cta-note{margin-top:14px;font-size:.78rem;color:#475569}
 
-/* ─── FOOTER ──────────────────────────────────────────────── */
+/* FOOTER */
 .foot{background:#060b15;padding:60px 28px 32px}
 .foot-in{max-width:1180px;margin:0 auto}
 .foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.05)}
@@ -261,16 +253,15 @@ img{display:block;max-width:100%}
 .foot-legal a{color:#334155;text-decoration:none;font-size:.78rem;transition:color .2s}
 .foot-legal a:hover{color:var(--white)}
 
-/* ─── KEYFRAMES ───────────────────────────────────────────── */
+/* KEYFRAMES */
 @keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
 @keyframes bee-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
 @keyframes cardFloat{0%,100%{transform:rotate(-1deg) translateY(0)}50%{transform:rotate(1deg) translateY(-10px)}}
 @keyframes orb{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
 @keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
-@keyframes spin{to{transform:rotate(360deg)}}
 @keyframes bounceIn{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
 
-/* ─── RESPONSIVE ──────────────────────────────────────────── */
+/* RESPONSIVE */
 @media(max-width:960px){
   .hero-grid{grid-template-columns:1fr;text-align:center;gap:0}
   .hero-sub,.demo-row,.demo-preview{max-width:100%}
@@ -287,7 +278,7 @@ img{display:block;max-width:100%}
   .foot-grid{grid-template-columns:1fr 1fr}
   .form-grid{grid-template-columns:1fr}
   .fg.full{grid-column:1}
-  .form-card{padding:32px 24px}
+  .form-card,.success-banner{padding:32px 24px}
 }
 @media(max-width:600px){
   .nav-links{display:none}
@@ -307,9 +298,7 @@ img{display:block;max-width:100%}
 <!-- NAV -->
 <nav class="nav" id="nav">
   <div class="nav-wrap">
-    <a href="#" class="logo" aria-label="TaleBuzzer home">
-      <span class="logo-bee">🐝</span> TaleBuzzer
-    </a>
+    <a href="#" class="logo"><span class="logo-bee">🐝</span> TaleBuzzer</a>
     <ul class="nav-links">
       <li><a href="#how">How It Works</a></li>
       <li><a href="#features">Features</a></li>
@@ -324,7 +313,7 @@ img{display:block;max-width:100%}
 </nav>
 
 <!-- MOBILE DRAWER -->
-<div class="drawer" id="drawer" role="dialog" aria-modal="true" aria-label="Navigation">
+<div class="drawer" id="drawer" role="dialog" aria-modal="true">
   <div class="drawer-top">
     <span class="logo"><span class="logo-bee">🐝</span> TaleBuzzer</span>
     <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
@@ -339,13 +328,12 @@ img{display:block;max-width:100%}
 </div>
 
 <!-- HERO -->
-<section class="hero" aria-labelledby="h1">
+<section class="hero">
   <div class="hero-grid">
     <div>
       <div class="hero-pill">🐝 Early Access — Join 4,800+ families</div>
-      <h1 id="h1">Every child deserves to be the <em>hero</em> of their own story</h1>
+      <h1>Every child deserves to be the <em>hero</em> of their own story</h1>
       <p class="hero-sub">TaleBuzzer turns your child's name, interests, and personality into a unique illustrated adventure in under 30 seconds — sparking a lifelong love of reading.</p>
-
       <div class="demo-wrap">
         <p class="demo-label">Type your child's name and see the magic</p>
         <div class="demo-row">
@@ -354,7 +342,6 @@ img{display:block;max-width:100%}
         </div>
         <div class="demo-preview" id="demo-preview" aria-live="polite"></div>
       </div>
-
       <div class="hero-trust">
         <div class="avatars" aria-hidden="true">
           <div class="av">👩</div><div class="av">👨</div><div class="av">👩</div><div class="av">👨</div>
@@ -362,7 +349,6 @@ img{display:block;max-width:100%}
         <span>★★★★★ &nbsp;<strong>4,800+ families</strong> reading together this week</span>
       </div>
     </div>
-
     <div class="card-side" aria-hidden="true">
       <div class="story-card">
         <div class="sc-meta">Age 7 · Illustrated Story · English</div>
@@ -385,7 +371,7 @@ img{display:block;max-width:100%}
 </section>
 
 <!-- STATS -->
-<div class="stats" role="region" aria-label="Platform statistics">
+<div class="stats">
   <div class="stats-grid">
     <div class="stat"><span class="stat-n" data-target="50" data-suffix="K+">0</span><div class="stat-l">Stories Created</div></div>
     <div class="stat"><span class="stat-n" data-target="4.8" data-suffix="★" data-dec="1">0</span><div class="stat-l">Average Rating</div></div>
@@ -396,44 +382,28 @@ img{display:block;max-width:100%}
 </div>
 
 <!-- HOW IT WORKS -->
-<section class="sec bg-off" id="how" aria-labelledby="how-h">
+<section class="sec bg-off" id="how">
   <div class="sec-in">
     <div class="rv">
       <div class="sec-eyebrow">How It Works</div>
-      <h2 class="sec-h" id="how-h">A personalised story in three simple steps</h2>
+      <h2 class="sec-h">A personalised story in three simple steps</h2>
       <p class="sec-sub">No writing skills needed. No waiting. Just your child's details and a sprinkle of AI magic.</p>
     </div>
     <div class="steps">
-      <div class="step rv" style="transition-delay:.08s">
-        <div class="step-ico">👶<span class="step-n">1</span></div>
-        <h3>Tell us about your child</h3>
-        <p>Enter their name, age, and a favourite interest. Choose a story theme. Under a minute, no sign-up needed to preview.</p>
-      </div>
-      <div class="step rv" style="transition-delay:.16s">
-        <div class="step-ico">✨<span class="step-n">2</span></div>
-        <h3>AI creates the story</h3>
-        <p>Our AI writes a unique, age-appropriate adventure with your child as the hero — vivid characters and a meaningful ending.</p>
-      </div>
-      <div class="step rv" style="transition-delay:.24s">
-        <div class="step-ico">📖<span class="step-n">3</span></div>
-        <h3>Read, earn, and explore</h3>
-        <p>Your child reads, answers comprehension questions, and earns Bee points to unlock new adventures and accessories.</p>
-      </div>
-      <div class="step rv" style="transition-delay:.32s">
-        <div class="step-ico">🐝<span class="step-n">4</span></div>
-        <h3>Watch the habit form</h3>
-        <p>Daily reading streaks, Bee rank promotions, and personalised reminders keep children coming back — without the bedtime fight.</p>
-      </div>
+      <div class="step rv" style="transition-delay:.08s"><div class="step-ico">👶<span class="step-n">1</span></div><h3>Tell us about your child</h3><p>Enter their name, age, and a favourite interest. Choose a story theme. Under a minute, no sign-up needed to preview.</p></div>
+      <div class="step rv" style="transition-delay:.16s"><div class="step-ico">✨<span class="step-n">2</span></div><h3>AI creates the story</h3><p>Our AI writes a unique, age-appropriate adventure with your child as the hero — vivid characters and a meaningful ending.</p></div>
+      <div class="step rv" style="transition-delay:.24s"><div class="step-ico">📖<span class="step-n">3</span></div><h3>Read, earn, and explore</h3><p>Your child reads, answers comprehension questions, and earns Bee points to unlock new adventures and accessories.</p></div>
+      <div class="step rv" style="transition-delay:.32s"><div class="step-ico">🐝<span class="step-n">4</span></div><h3>Watch the habit form</h3><p>Daily reading streaks, Bee rank promotions, and personalised reminders keep children coming back — without the bedtime fight.</p></div>
     </div>
   </div>
 </section>
 
 <!-- FEATURES -->
-<section class="sec" id="features" aria-labelledby="feat-h">
+<section class="sec" id="features">
   <div class="sec-in">
     <div class="rv">
       <div class="sec-eyebrow">Features</div>
-      <h2 class="sec-h" id="feat-h">Everything children need to fall in love with reading</h2>
+      <h2 class="sec-h">Everything children need to fall in love with reading</h2>
       <p class="sec-sub">Built for parents, designed for children, and trusted by UK primary schools.</p>
     </div>
     <div class="feats">
@@ -451,11 +421,11 @@ img{display:block;max-width:100%}
 </section>
 
 <!-- PRICING -->
-<section class="sec bg-off" id="pricing" aria-labelledby="price-h">
+<section class="sec bg-off" id="pricing">
   <div class="sec-in">
     <div class="rv" style="text-align:center">
       <div class="sec-eyebrow" style="justify-content:center">Pricing</div>
-      <h2 class="sec-h" id="price-h" style="max-width:100%;text-align:center">Simple, honest pricing</h2>
+      <h2 class="sec-h" style="max-width:100%;text-align:center">Simple, honest pricing</h2>
       <p class="sec-sub" style="max-width:100%;text-align:center;margin:12px auto 0">Start free. No credit card needed. Upgrade when you are ready.</p>
     </div>
     <div class="prices">
@@ -463,11 +433,7 @@ img{display:block;max-width:100%}
         <div class="price-tier">Free</div>
         <div class="price-val">£0 <sub>/ forever</sub></div>
         <p class="price-desc">3 stories to explore. No card required.</p>
-        <ul class="price-list">
-          <li>3 lifetime stories</li><li>Text-only format</li>
-          <li>Name &amp; gender personalisation</li>
-          <li>Bee reward system</li><li>Parent dashboard</li>
-        </ul>
+        <ul class="price-list"><li>3 lifetime stories</li><li>Text-only format</li><li>Name &amp; gender personalisation</li><li>Bee reward system</li><li>Parent dashboard</li></ul>
         <button class="price-btn pb-line" onclick="document.getElementById('interest').scrollIntoView({behavior:'smooth'})">Get Started Free</button>
       </div>
       <div class="price-card price-pop rv" style="transition-delay:.08s">
@@ -475,28 +441,14 @@ img{display:block;max-width:100%}
         <div class="price-tier">Premium</div>
         <div class="price-val">£15 <sub>/ month</sub></div>
         <p class="price-desc">Or £90/year — save 2 months</p>
-        <ul class="price-list">
-          <li>Unlimited illustrated stories</li><li>3 child profiles</li>
-          <li>Up to 3 supporting characters</li>
-          <li>English &amp; Spanish bilingual</li><li>Offline reading</li>
-          <li>Child PIN access mode</li><li>Weekly reading reports</li>
-          <li>SEN mode included</li>
-        </ul>
+        <ul class="price-list"><li>Unlimited illustrated stories</li><li>3 child profiles</li><li>Up to 3 supporting characters</li><li>English &amp; Spanish bilingual</li><li>Offline reading</li><li>Child PIN access mode</li><li>Weekly reading reports</li><li>SEN mode included</li></ul>
         <button class="price-btn pb-fill" onclick="document.getElementById('interest').scrollIntoView({behavior:'smooth'})">Start 7-Day Free Trial</button>
       </div>
       <div class="price-card rv-r">
         <div class="price-tier">Schools</div>
         <div class="price-val">£120 <sub>/ year</sub></div>
         <p class="price-desc">Per classroom · Site licence available</p>
-        <ul class="price-list">
-          <li>Class-level story generation</li>
-          <li>Teacher &amp; admin dashboards</li>
-          <li>Comprehension reporting</li>
-          <li>Half-term impact report</li>
-          <li>DPA template included</li>
-          <li>Purchase order accepted</li>
-          <li>KCSIE compliant</li>
-        </ul>
+        <ul class="price-list"><li>Class-level story generation</li><li>Teacher &amp; admin dashboards</li><li>Comprehension reporting</li><li>Half-term impact report</li><li>DPA template included</li><li>Purchase order accepted</li><li>KCSIE compliant</li></ul>
         <button class="price-btn pb-line" onclick="document.getElementById('schools').scrollIntoView({behavior:'smooth'})">Request School Trial</button>
       </div>
     </div>
@@ -504,44 +456,30 @@ img{display:block;max-width:100%}
 </section>
 
 <!-- TESTIMONIALS -->
-<section class="sec" aria-labelledby="testi-h">
+<section class="sec">
   <div class="sec-in">
     <div class="rv" style="text-align:center">
       <div class="sec-eyebrow" style="justify-content:center">What Families Say</div>
-      <h2 class="sec-h" id="testi-h" style="max-width:100%;text-align:center">The stories children actually want to re-read</h2>
+      <h2 class="sec-h" style="max-width:100%;text-align:center">The stories children actually want to re-read</h2>
     </div>
     <div class="testi-grid">
-      <div class="testi rv-l">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-q">"My daughter cried when she saw herself as the main character. She has read her story seven times this week and asked for another one before breakfast. Worth every penny."</p>
-        <div class="testi-who"><div class="testi-av">👩</div><div><div class="testi-name">Rachel M.</div><div class="testi-role">Parent · South London</div></div></div>
-      </div>
-      <div class="testi rv" style="transition-delay:.08s">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-q">"I generated stories for all 28 children in my class in under ten minutes. The comprehension questions saved me two hours of lesson preparation that week."</p>
-        <div class="testi-who"><div class="testi-av">👨</div><div><div class="testi-name">Mr Osei</div><div class="testi-role">Year 3 Teacher · Bristol</div></div></div>
-      </div>
-      <div class="testi rv-r">
-        <div class="stars" aria-label="5 stars">★★★★★</div>
-        <p class="testi-q">"My son has dyslexia and has always struggled with reading. The dyslexia-friendly font and read-aloud option changed everything. He now asks for his story at bedtime."</p>
-        <div class="testi-who"><div class="testi-av">👩</div><div><div class="testi-name">Priya S.</div><div class="testi-role">Parent · Manchester</div></div></div>
-      </div>
+      <div class="testi rv-l"><div class="stars">★★★★★</div><p class="testi-q">"My daughter cried when she saw herself as the main character. She has read her story seven times this week and asked for another one before breakfast. Worth every penny."</p><div class="testi-who"><div class="testi-av">👩</div><div><div class="testi-name">Rachel M.</div><div class="testi-role">Parent · South London</div></div></div></div>
+      <div class="testi rv" style="transition-delay:.08s"><div class="stars">★★★★★</div><p class="testi-q">"I generated stories for all 28 children in my class in under ten minutes. The comprehension questions saved me two hours of lesson preparation that week."</p><div class="testi-who"><div class="testi-av">👨</div><div><div class="testi-name">Mr Osei</div><div class="testi-role">Year 3 Teacher · Bristol</div></div></div></div>
+      <div class="testi rv-r"><div class="stars">★★★★★</div><p class="testi-q">"My son has dyslexia and has always struggled with reading. The dyslexia-friendly font and read-aloud option changed everything. He now asks for his story at bedtime."</p><div class="testi-who"><div class="testi-av">👩</div><div><div class="testi-name">Priya S.</div><div class="testi-role">Parent · Manchester</div></div></div></div>
     </div>
   </div>
 </section>
 
 <!-- SCHOOLS -->
-<section class="schools-sec" id="schools" aria-labelledby="school-h">
+<section class="schools-sec" id="schools">
   <div class="school-in">
     <div class="rv-l">
       <div class="sec-eyebrow school-eye">For Schools &amp; Educators</div>
-      <h2 class="sec-h school-h" id="school-h">Personalised reading at classroom scale</h2>
+      <h2 class="sec-h school-h">Personalised reading at classroom scale</h2>
       <p class="sec-sub school-sub">30-day free trial. No credit card. No complex setup. A signed DPA within 24 hours. Purchase order payment accepted.</p>
       <div class="badges">
-        <span class="badge">KCSIE Compliant</span>
-        <span class="badge">GDPR-UK Ready</span>
-        <span class="badge">Ofsted Evidence</span>
-        <span class="badge">DPA Template Included</span>
+        <span class="badge">KCSIE Compliant</span><span class="badge">GDPR-UK Ready</span>
+        <span class="badge">Ofsted Evidence</span><span class="badge">DPA Template Included</span>
         <span class="badge">Academic Year Billing</span>
       </div>
       <a href="#interest" class="school-cta">Request School Trial →</a>
@@ -549,74 +487,62 @@ img{display:block;max-width:100%}
     <div class="rv-r">
       <div class="metrics-card">
         <h3>📊 Real class impact data</h3>
-        <div class="metric">
-          <div class="metric-top"><span class="metric-lbl">Stories read per student / week</span><span class="metric-val">2.4 avg</span></div>
-          <div class="metric-bar"><div class="metric-fill" data-w="80"></div></div>
-        </div>
-        <div class="metric">
-          <div class="metric-top"><span class="metric-lbl">Comprehension question accuracy</span><span class="metric-val">67%</span></div>
-          <div class="metric-bar"><div class="metric-fill" data-w="67"></div></div>
-        </div>
-        <div class="metric">
-          <div class="metric-top"><span class="metric-lbl">Teacher dashboard weekly usage</span><span class="metric-val">85%</span></div>
-          <div class="metric-bar"><div class="metric-fill" data-w="85"></div></div>
-        </div>
-        <div class="metric">
-          <div class="metric-top"><span class="metric-lbl">Trial-to-paid school conversion</span><span class="metric-val">70%</span></div>
-          <div class="metric-bar"><div class="metric-fill" data-w="70"></div></div>
-        </div>
+        <div class="metric"><div class="metric-top"><span class="metric-lbl">Stories read per student / week</span><span class="metric-val">2.4 avg</span></div><div class="metric-bar"><div class="metric-fill" data-w="80"></div></div></div>
+        <div class="metric"><div class="metric-top"><span class="metric-lbl">Comprehension question accuracy</span><span class="metric-val">67%</span></div><div class="metric-bar"><div class="metric-fill" data-w="67"></div></div></div>
+        <div class="metric"><div class="metric-top"><span class="metric-lbl">Teacher dashboard weekly usage</span><span class="metric-val">85%</span></div><div class="metric-bar"><div class="metric-fill" data-w="85"></div></div></div>
+        <div class="metric"><div class="metric-top"><span class="metric-lbl">Trial-to-paid school conversion</span><span class="metric-val">70%</span></div><div class="metric-bar"><div class="metric-fill" data-w="70"></div></div></div>
       </div>
     </div>
   </div>
 </section>
 
 <!-- INTEREST FORM -->
-<section class="form-sec" id="interest" aria-labelledby="form-h">
+<section class="form-sec" id="interest">
   <div class="form-in">
     <div class="rv">
       <div class="sec-eyebrow" style="justify-content:center">Register Your Interest</div>
-      <h2 class="sec-h" id="form-h" style="text-align:center;max-width:100%">Be the first to know when we launch</h2>
+      <h2 class="sec-h" style="text-align:center;max-width:100%">Be the first to know when we launch</h2>
       <p class="sec-sub" style="text-align:center;margin:12px auto 0;max-width:500px">
         TaleBuzzer is in early access. Register now and we will reach out personally with your invitation — along with an exclusive early-access offer.
       </p>
     </div>
 
-    <div class="form-card rv" style="transition-delay:.14s">
+    <!-- SUCCESS BANNER — shown when page loads with ?success=1 -->
+    <div class="success-banner" id="success-banner">
+      <span class="ok-ico">🐝</span>
+      <h3>You are on the list!</h3>
+      <p>We will be in touch very soon with your personal early-access invite. Keep an eye on your inbox.</p>
+    </div>
 
-      <!-- SUCCESS STATE -->
-      <div class="form-ok" id="form-ok">
-        <span class="ok-ico">🐝</span>
-        <h3>You are on the list!</h3>
-        <p>We will be in touch very soon with your personal early-access invite. Keep an eye on your inbox.</p>
-      </div>
-
-      <!-- FORM STATE -->
-      <form id="interest-form" name="interest-form" data-netlify="true" netlify-honeypot="bot-field" novalidate aria-label="Register your interest in TaleBuzzer">
+    <!-- FORM — Netlify detects this at build time via the netlify attribute -->
+    <div class="form-card" id="form-card">
+      <form
+        name="interest-form"
+        method="POST"
+        action="/?success=1#interest"
+        netlify
+        netlify-honeypot="bot-field"
+      >
+        <!-- Required hidden fields for Netlify Forms -->
         <input type="hidden" name="form-name" value="interest-form">
-        <input type="hidden" name="bot-field" style="display:none">
+        <p style="display:none"><label>Do not fill this in if you are human: <input name="bot-field"></label></p>
+
         <div class="form-grid">
-
-          <div class="fg" id="g-fn">
+          <div class="fg">
             <label for="fn">First name <span class="req">*</span></label>
-            <input class="fi" id="fn" name="first_name" type="text" placeholder="Your first name" autocomplete="given-name">
-            <span class="ferr">Please enter your first name</span>
+            <input class="fi" id="fn" name="first_name" type="text" placeholder="Your first name" autocomplete="given-name" required>
           </div>
-
-          <div class="fg" id="g-ln">
+          <div class="fg">
             <label for="ln">Last name <span class="req">*</span></label>
-            <input class="fi" id="ln" name="last_name" type="text" placeholder="Your last name" autocomplete="family-name">
-            <span class="ferr">Please enter your last name</span>
+            <input class="fi" id="ln" name="last_name" type="text" placeholder="Your last name" autocomplete="family-name" required>
           </div>
-
-          <div class="fg full" id="g-em">
+          <div class="fg full">
             <label for="em">Email address <span class="req">*</span></label>
-            <input class="fi" id="em" name="email" type="email" placeholder="you@example.com" autocomplete="email">
-            <span class="ferr">Please enter a valid email address</span>
+            <input class="fi" id="em" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
           </div>
-
-          <div class="fg" id="g-role">
+          <div class="fg">
             <label for="role">I am a <span class="req">*</span></label>
-            <select class="fs" id="role" name="role">
+            <select class="fs" id="role" name="role" required>
               <option value="">Select your role…</option>
               <option value="parent">Parent / Guardian</option>
               <option value="teacher">Teacher</option>
@@ -624,9 +550,7 @@ img{display:block;max-width:100%}
               <option value="gift_giver">Gift-giver (grandparent etc.)</option>
               <option value="other">Other</option>
             </select>
-            <span class="ferr">Please select your role</span>
           </div>
-
           <div class="fg">
             <label for="age">Children's age range</label>
             <select class="fs" id="age" name="children_age">
@@ -638,45 +562,37 @@ img{display:block;max-width:100%}
               <option value="na">Not applicable</option>
             </select>
           </div>
-
           <div class="fg full">
             <label for="msg">What interests you most about TaleBuzzer?</label>
             <textarea class="ft" id="msg" name="interest" placeholder="Tell us what brought you here — personalised stories, the reading habit, school use, or something else…"></textarea>
           </div>
-
           <div class="fg full">
             <div class="cb-row">
-              <input class="cb" type="checkbox" id="consent-email" name="consent_email">
+              <input class="cb" type="checkbox" id="consent-email" name="consent_email" value="yes">
               <label class="cb-lbl" for="consent-email">I am happy for TaleBuzzer to contact me by email about early access, product updates, and launch offers. You can unsubscribe at any time.</label>
             </div>
           </div>
-
-          <div class="fg full" id="g-terms">
+          <div class="fg full">
             <div class="cb-row">
-              <input class="cb" type="checkbox" id="consent-terms" name="consent_terms">
+              <input class="cb" type="checkbox" id="consent-terms" name="consent_terms" value="yes" required>
               <label class="cb-lbl" for="consent-terms">I have read and agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>. <span class="req">*</span></label>
             </div>
-            <span class="ferr" id="terms-err">You must agree to the terms to continue</span>
           </div>
-
         </div>
 
-        <button type="submit" class="sub-btn" id="sub-btn">
-          <span id="sub-lbl">Register My Interest 🐝</span>
-          <div class="spin" id="sub-spin" aria-hidden="true"></div>
-        </button>
+        <button type="submit" class="sub-btn">Register My Interest 🐝</button>
         <p style="font-size:.75rem;color:#94a3b8;text-align:center;margin-top:10px">Your data is handled in line with GDPR-UK. We will never share your details with third parties.</p>
       </form>
-
     </div>
+
   </div>
 </section>
 
 <!-- CTA -->
-<section class="cta-sec" aria-labelledby="cta-h">
+<section class="cta-sec">
   <div class="cta-in">
-    <span class="cta-bee" aria-hidden="true">🐝</span>
-    <h2 id="cta-h">Start your child's first adventure today</h2>
+    <span class="cta-bee">🐝</span>
+    <h2>Start your child's first adventure today</h2>
     <p>Three free stories. No credit card. See the look on their face when they are the hero.</p>
     <div class="cta-btns">
       <a href="#interest" class="btn-a">✨ Create Free Story</a>
@@ -696,212 +612,112 @@ img{display:block;max-width:100%}
       </div>
       <div>
         <div class="foot-h">Product</div>
-        <ul class="foot-ul">
-          <li><a href="#how">How It Works</a></li>
-          <li><a href="#features">Features</a></li>
-          <li><a href="#pricing">Pricing</a></li>
-          <li><a href="#">Story Gallery</a></li>
-          <li><a href="#">Gift Cards</a></li>
-        </ul>
+        <ul class="foot-ul"><li><a href="#how">How It Works</a></li><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#">Story Gallery</a></li><li><a href="#">Gift Cards</a></li></ul>
       </div>
       <div>
         <div class="foot-h">Schools</div>
-        <ul class="foot-ul">
-          <li><a href="#">For Teachers</a></li>
-          <li><a href="#">For Administrators</a></li>
-          <li><a href="#schools">Free School Trial</a></li>
-          <li><a href="#">KCSIE Statement</a></li>
-          <li><a href="#">DPA Template</a></li>
-        </ul>
+        <ul class="foot-ul"><li><a href="#">For Teachers</a></li><li><a href="#">For Administrators</a></li><li><a href="#schools">Free School Trial</a></li><li><a href="#">KCSIE Statement</a></li><li><a href="#">DPA Template</a></li></ul>
       </div>
       <div>
         <div class="foot-h">Company</div>
-        <ul class="foot-ul">
-          <li><a href="#">About</a></li>
-          <li><a href="#">Blog</a></li>
-          <li><a href="#">Privacy Policy</a></li>
-          <li><a href="#">Terms of Service</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
+        <ul class="foot-ul"><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Contact</a></li></ul>
       </div>
     </div>
     <div class="foot-btm">
       <span class="foot-copy">© 2026 TaleBuzzer Ltd. All rights reserved.</span>
-      <div class="foot-legal">
-        <a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><a href="#">GDPR</a>
-      </div>
+      <div class="foot-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><a href="#">GDPR</a></div>
     </div>
   </div>
 </footer>
 
 <script>
-/* ── MOBILE NAV ──────────────────────────────────────────── */
-const burger = document.getElementById('burger');
-const drawer = document.getElementById('drawer');
-const drawerClose = document.getElementById('drawer-close');
-function openDrawer(){ drawer.style.display='flex'; requestAnimationFrame(()=>drawer.classList.add('open')); burger.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-function closeDrawer(){ drawer.classList.remove('open'); setTimeout(()=>{ drawer.style.display='none'; },350); burger.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-burger.addEventListener('click', openDrawer);
-drawerClose.addEventListener('click', closeDrawer);
-drawer.addEventListener('click', e=>{ if(e.target===drawer) closeDrawer(); });
-
-/* ── STICKY NAV ──────────────────────────────────────────── */
+/* NAV */
 const nav = document.getElementById('nav');
-window.addEventListener('scroll', ()=>{ nav.classList.toggle('stuck', window.scrollY > 60); }, {passive:true});
+window.addEventListener('scroll',()=>nav.classList.toggle('stuck',window.scrollY>60),{passive:true});
 
-/* ── BEE PARTICLE CANVAS ─────────────────────────────────── */
+/* MOBILE DRAWER */
+const burger=document.getElementById('burger'),drawer=document.getElementById('drawer'),drawerClose=document.getElementById('drawer-close');
+function openDrawer(){drawer.style.display='flex';requestAnimationFrame(()=>drawer.classList.add('open'));burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
+function closeDrawer(){drawer.classList.remove('open');setTimeout(()=>{drawer.style.display='none'},350);burger.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+burger.addEventListener('click',openDrawer);
+drawerClose.addEventListener('click',closeDrawer);
+drawer.addEventListener('click',e=>{if(e.target===drawer)closeDrawer()});
+
+/* BEE CANVAS */
 (function(){
-  const c = document.getElementById('bees');
-  const ctx = c.getContext('2d');
-  let bees=[], W, H;
-  function resize(){ W=c.width=window.innerWidth; H=c.height=window.innerHeight; }
+  const c=document.getElementById('bees'),ctx=c.getContext('2d');
+  let bees=[],W,H;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}
   resize();
-  window.addEventListener('resize', resize, {passive:true});
-  function mkBee(){ return { x:Math.random()*W, y:Math.random()*H, size:9+Math.random()*7, vx:(Math.random()-.5)*.55, vy:(Math.random()-.5)*.55, angle:Math.random()*Math.PI*2, spin:(Math.random()-.5)*.018, opacity:.2+Math.random()*.35 }; }
-  for(let i=0;i<20;i++) bees.push(mkBee());
+  window.addEventListener('resize',resize,{passive:true});
+  function mkBee(){return{x:Math.random()*W,y:Math.random()*H,size:9+Math.random()*7,vx:(Math.random()-.5)*.55,vy:(Math.random()-.5)*.55,angle:Math.random()*Math.PI*2,spin:(Math.random()-.5)*.018,opacity:.2+Math.random()*.35}}
+  for(let i=0;i<20;i++)bees.push(mkBee());
   function draw(){
     ctx.clearRect(0,0,W,H);
     bees.forEach(b=>{
-      ctx.save(); ctx.translate(b.x,b.y); ctx.rotate(b.angle); ctx.globalAlpha=b.opacity;
-      ctx.font=`${b.size}px serif`; ctx.textAlign='center'; ctx.textBaseline='middle';
-      ctx.fillText('🐝',0,0); ctx.restore();
-      b.x+=b.vx; b.y+=b.vy; b.angle+=b.spin;
-      if(b.x<-40) b.x=W+40; if(b.x>W+40) b.x=-40;
-      if(b.y<-40) b.y=H+40; if(b.y>H+40) b.y=-40;
+      ctx.save();ctx.translate(b.x,b.y);ctx.rotate(b.angle);ctx.globalAlpha=b.opacity;
+      ctx.font=`${b.size}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('🐝',0,0);ctx.restore();
+      b.x+=b.vx;b.y+=b.vy;b.angle+=b.spin;
+      if(b.x<-40)b.x=W+40;if(b.x>W+40)b.x=-40;
+      if(b.y<-40)b.y=H+40;if(b.y>H+40)b.y=-40;
     });
     requestAnimationFrame(draw);
   }
   draw();
 })();
 
-/* ── STORY CARD PROGRESS ─────────────────────────────────── */
-setTimeout(()=>{ const f=document.getElementById('sc-fill'); if(f) f.style.width='73%'; }, 600);
+/* STORY CARD FILL */
+setTimeout(()=>{const f=document.getElementById('sc-fill');if(f)f.style.width='73%'},600);
 
-/* ── LIVE HERO DEMO ──────────────────────────────────────── */
-const excerpts = [
+/* LIVE HERO DEMO */
+const excerpts=[
   n=>`"<span class='dn'>${n}</span> stepped through the ancient door and gasped — a whole hidden kingdom waited, and a golden dragon bowed its head. Only someone as brave as <span class='dn'>${n}</span> had ever made it this far…"`,
   n=>`"With one mighty leap, <span class='dn'>${n}</span> soared above the clouds. The stars cheered. The moon waved. Nobody in the universe had ever been this extraordinary before…"`,
   n=>`"The enchanted library had been locked for a hundred years — until <span class='dn'>${n}</span> arrived. The books flew open on their own, every page whispering the same name…"`,
   n=>`"Deep in the jungle, an ancient mystery waited. Every explorer had failed — until <span class='dn'>${n}</span> noticed the tiny golden bee and followed it straight to the treasure…"`,
 ];
 let demoT;
-const demoInput = document.getElementById('demo-input');
-const demoPreview = document.getElementById('demo-preview');
-const demoBtn = document.getElementById('demo-btn');
-const scTitle = document.getElementById('sc-title');
-const scName = document.getElementById('sc-name');
-
+const demoInput=document.getElementById('demo-input'),demoPreview=document.getElementById('demo-preview'),demoBtn=document.getElementById('demo-btn'),scTitle=document.getElementById('sc-title'),scName=document.getElementById('sc-name');
 function runDemo(raw){
-  if(!raw.trim()) return;
-  const n = raw.trim().charAt(0).toUpperCase() + raw.trim().slice(1);
-  const pick = excerpts[Math.floor(Math.random()*excerpts.length)](n);
-  demoPreview.innerHTML = pick + '<span class="cursor"></span>';
-  demoPreview.style.display = 'block';
-  if(scTitle) scTitle.textContent = `${n}'s Amazing Adventure`;
-  if(scName)  scName.textContent  = n;
+  if(!raw.trim())return;
+  const n=raw.trim().charAt(0).toUpperCase()+raw.trim().slice(1);
+  demoPreview.innerHTML=excerpts[Math.floor(Math.random()*excerpts.length)](n)+'<span class="cursor"></span>';
+  demoPreview.style.display='block';
+  if(scTitle)scTitle.textContent=`${n}'s Amazing Adventure`;
+  if(scName)scName.textContent=n;
 }
-demoBtn.addEventListener('click', ()=>runDemo(demoInput.value));
-demoInput.addEventListener('keydown', e=>{ if(e.key==='Enter') runDemo(demoInput.value); });
-demoInput.addEventListener('input', ()=>{
-  clearTimeout(demoT);
-  if(demoInput.value.trim().length > 1) demoT = setTimeout(()=>runDemo(demoInput.value), 650);
-});
+demoBtn.addEventListener('click',()=>runDemo(demoInput.value));
+demoInput.addEventListener('keydown',e=>{if(e.key==='Enter')runDemo(demoInput.value)});
+demoInput.addEventListener('input',()=>{clearTimeout(demoT);if(demoInput.value.trim().length>1)demoT=setTimeout(()=>runDemo(demoInput.value),650)});
 
-/* ── SCROLL REVEALS ──────────────────────────────────────── */
-const revealObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{ if(e.isIntersecting){ e.target.classList.add('on'); revealObs.unobserve(e.target); } });
-}, {threshold:0.12});
-document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>revealObs.observe(el));
+/* SCROLL REVEALS */
+const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revObs.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>revObs.observe(el));
 
-/* ── ANIMATED COUNTERS ───────────────────────────────────── */
-const cntObs = new IntersectionObserver(entries=>{
+/* ANIMATED COUNTERS */
+const cntObs=new IntersectionObserver(entries=>{
   entries.forEach(e=>{
-    if(!e.isIntersecting) return;
-    const el = e.target;
-    const target = parseFloat(el.dataset.target);
-    const suffix = el.dataset.suffix||'';
-    const dec    = parseInt(el.dataset.dec||'0');
-    const dur    = 1800;
-    const t0     = performance.now();
-    (function tick(now){
-      const p    = Math.min((now-t0)/dur,1);
-      const eased= 1-Math.pow(1-p,3);
-      el.textContent = (dec>0 ? (eased*target).toFixed(dec) : Math.floor(eased*target)) + suffix;
-      if(p<1) requestAnimationFrame(tick);
-    })(t0);
+    if(!e.isIntersecting)return;
+    const el=e.target,target=parseFloat(el.dataset.target),suffix=el.dataset.suffix||'',dec=parseInt(el.dataset.dec||'0'),dur=1800,t0=performance.now();
+    (function tick(now){const p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3);el.textContent=(dec>0?(ease*target).toFixed(dec):Math.floor(ease*target))+suffix;if(p<1)requestAnimationFrame(tick)})(t0);
     cntObs.unobserve(el);
   });
 },{threshold:.5});
 document.querySelectorAll('.stat-n[data-target]').forEach(el=>cntObs.observe(el));
 
-/* ── SCHOOL METRIC BARS ──────────────────────────────────── */
-const barObs = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(!e.isIntersecting) return;
-    e.target.querySelectorAll('.metric-fill[data-w]').forEach(b=>{ setTimeout(()=>{ b.style.width=b.dataset.w+'%'; },150); });
-    barObs.unobserve(e.target);
-  });
+/* METRIC BARS */
+const barObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('.metric-fill[data-w]').forEach(b=>{setTimeout(()=>{b.style.width=b.dataset.w+'%'},150)});barObs.unobserve(e.target)});
 },{threshold:.3});
 document.querySelectorAll('.metrics-card').forEach(el=>barObs.observe(el));
 
-/* ── INTEREST FORM ───────────────────────────────────────── */
-const form    = document.getElementById('interest-form');
-const formOk  = document.getElementById('form-ok');
-const subBtn  = document.getElementById('sub-btn');
-const subLbl  = document.getElementById('sub-lbl');
-const subSpin = document.getElementById('sub-spin');
-
-function setErr(grpId, show){
-  const g = document.getElementById(grpId);
-  if(!g) return;
-  g.classList.toggle('has-err', show);
-  const inp = g.querySelector('.fi,.fs,.ft');
-  if(inp) inp.classList.toggle('err', show);
+/* SUCCESS BANNER — show if Netlify redirected back with ?success=1 */
+if(new URLSearchParams(window.location.search).get('success')==='1'){
+  document.getElementById('success-banner').classList.add('show');
+  document.getElementById('form-card').style.display='none';
+  setTimeout(()=>document.getElementById('interest').scrollIntoView({behavior:'smooth'}),100);
 }
-function validate(){
-  let ok=true;
-  const fn    = document.getElementById('fn').value.trim();
-  const ln    = document.getElementById('ln').value.trim();
-  const em    = document.getElementById('em').value.trim();
-  const role  = document.getElementById('role').value;
-  const terms = document.getElementById('consent-terms').checked;
-  const emailOk = /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(em);
-  setErr('g-fn',   !fn);       if(!fn)      ok=false;
-  setErr('g-ln',   !ln);       if(!ln)      ok=false;
-  setErr('g-em',   !emailOk);  if(!emailOk) ok=false;
-  setErr('g-role', !role);     if(!role)    ok=false;
-  const te = document.getElementById('terms-err');
-  if(!terms){ te.style.display='block'; document.getElementById('consent-terms').classList.add('err'); ok=false; }
-  else       { te.style.display='none';  document.getElementById('consent-terms').classList.remove('err'); }
-  return ok;
-}
-['fn','ln','em'].forEach(id=>{
-  document.getElementById(id).addEventListener('input',()=>setErr('g-'+id,false));
-});
-document.getElementById('role').addEventListener('change',()=>setErr('g-role',false));
-document.getElementById('consent-terms').addEventListener('change',function(){
-  document.getElementById('terms-err').style.display = this.checked?'none':'block';
-  this.classList.toggle('err',!this.checked);
-});
-
-form.addEventListener('submit', async e=>{
-  e.preventDefault();
-  if(!validate()) return;
-  subBtn.disabled=true;
-  subLbl.style.display='none';
-  subSpin.style.display='block';
-  const formData = new FormData(form);
-  await fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(formData).toString()
-  });
-  form.style.display='none';
-  formOk.style.display='block';
-  subBtn.disabled=false;
-  subLbl.style.display='inline';
-  subSpin.style.display='none';
-});
 </script>
 </body>
 </html>
