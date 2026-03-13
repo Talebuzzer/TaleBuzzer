@@ -591,7 +591,7 @@ img{display:block;max-width:100%}
       </div>
 
       <!-- FORM STATE -->
-      <form id="interest-form" name="interest-form" data-netlify="true" netlify-honeypot="bot-field" novalidate aria-label="Register your interest in TaleBuzzer">
+      <form id="interest-form" name="interest-form" method="POST" action="/?submitted=true" data-netlify="true" netlify-honeypot="bot-field" novalidate aria-label="Register your interest in TaleBuzzer">
         <input type="hidden" name="form-name" value="interest-form">
         <input type="hidden" name="bot-field" style="display:none">
         <div class="form-grid">
@@ -884,23 +884,19 @@ document.getElementById('consent-terms').addEventListener('change',function(){
   this.classList.toggle('err',!this.checked);
 });
 
-form.addEventListener('submit', async e=>{
-  e.preventDefault();
-  if(!validate()) return;
-  subBtn.disabled=true;
-  subLbl.style.display='none';
-  subSpin.style.display='block';
-  const formData = new FormData(form);
-  await fetch('/', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-    body: new URLSearchParams(formData).toString()
-  });
+/* Show success if Netlify redirected back with ?submitted=true */
+if(new URLSearchParams(window.location.search).get('submitted')==='true'){
   form.style.display='none';
   formOk.style.display='block';
-  subBtn.disabled=false;
-  subLbl.style.display='inline';
-  subSpin.style.display='none';
+  setTimeout(()=>document.getElementById('interest').scrollIntoView({behavior:'smooth'}),100);
+}
+
+/* Native Netlify submission — no fetch needed, browser posts directly */
+form.addEventListener('submit', e=>{
+  if(!validate()){ e.preventDefault(); return; }
+  subBtn.disabled=true;
+  subBtn.innerHTML='Submitting… <span style="opacity:.7;font-size:.85rem">please wait</span>';
+  /* Validation passed — browser submits, Netlify intercepts */
 });
 </script>
 </body>
