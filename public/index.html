@@ -1,1 +1,747 @@
 
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TaleBuzzer — Every Child Deserves to Be the Hero of Their Own Story</title>
+<meta name="description" content="AI-powered personalised children's stories. Your child becomes the hero in under 30 seconds. Free to start. Loved by UK families and primary schools.">
+<meta property="og:title" content="TaleBuzzer — Personalised Children's Stories">
+<meta property="og:description" content="Your child becomes the hero of their own story in under 30 seconds. AI-powered, illustrated, and loved by UK families.">
+<meta property="og:type" content="website">
+<meta property="og:image" content="https://talebuzzer.com/social-preview.png">
+<meta property="og:url" content="https://talebuzzer.com">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="TaleBuzzer — Personalised Children's Stories">
+<meta name="twitter:description" content="Your child becomes the hero of their own story in under 30 seconds.">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "TaleBuzzer",
+  "description": "AI-powered personalised children's stories that turn every child into the hero of their own adventure.",
+  "url": "https://talebuzzer.com",
+  "offers": [
+    {"@type":"Offer","name":"Free","price":"0","priceCurrency":"GBP"},
+    {"@type":"Offer","name":"Premium","price":"15","priceCurrency":"GBP","billingIncrement":"P1M"},
+    {"@type":"Offer","name":"Schools","price":"120","priceCurrency":"GBP","billingIncrement":"P1Y"}
+  ]
+}
+<\/script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,300;9..144,700;9..144,900&family=DM+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-font-smoothing:antialiased}
+:root{
+  --honey:#f59e0b;--honey-dark:#d97706;--honey-pale:#fffbeb;
+  --sky:#0ea5e9;--sky-pale:#f0f9ff;
+  --ink:#0d1117;--ink-mid:#334155;--ink-soft:#64748b;
+  --white:#ffffff;--off:#fafaf8;--border:#e8e4dc;
+  --r:14px;--r-lg:22px;--r-xl:32px;
+  --shadow:0 2px 12px rgba(0,0,0,.06);
+  --shadow-md:0 8px 32px rgba(0,0,0,.08);
+  --shadow-lg:0 24px 64px rgba(0,0,0,.1),0 8px 24px rgba(0,0,0,.06);
+  --font-d:'Fraunces',Georgia,serif;
+  --font-b:'DM Sans',system-ui,sans-serif;
+  --ease:cubic-bezier(.22,1,.36,1);
+}
+body{font-family:var(--font-b);color:var(--ink);background:var(--white);overflow-x:hidden;line-height:1.65}
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
+::-webkit-scrollbar{width:5px}
+::-webkit-scrollbar-track{background:var(--off)}
+::-webkit-scrollbar-thumb{background:var(--honey);border-radius:99px}
+
+/* NAV */
+.nav{position:fixed;inset:0 0 auto;z-index:200;padding:22px 0;transition:all .45s var(--ease)}
+.nav.stuck{background:rgba(255,255,255,.95);backdrop-filter:blur(18px);padding:12px 0;box-shadow:0 1px 0 var(--border),0 4px 24px rgba(0,0,0,.05)}
+.nav-wrap{max-width:1180px;margin:0 auto;padding:0 28px;display:flex;align-items:center;justify-content:space-between;gap:20px}
+.logo{display:flex;align-items:center;gap:9px;text-decoration:none;font-family:var(--font-d);font-weight:900;font-size:1.2rem;color:var(--ink)}
+.logo-bee{display:inline-block;animation:bee-bob 3.5s ease-in-out infinite;font-size:1.4rem}
+.nav-links{list-style:none;display:flex;align-items:center;gap:4px}
+.nav-links a{text-decoration:none;color:var(--ink-mid);font-size:.875rem;font-weight:500;padding:7px 14px;border-radius:9px;transition:all .18s}
+.nav-links a:hover{color:var(--ink);background:#f1f1ef}
+.nav-cta{background:var(--honey)!important;color:var(--white)!important;font-weight:600!important}
+.nav-cta:hover{background:var(--honey-dark)!important;box-shadow:0 4px 14px rgba(245,158,11,.35)!important}
+.burger{display:none;flex-direction:column;gap:5px;cursor:pointer;padding:8px;border:none;background:none;border-radius:8px}
+.burger span{display:block;width:20px;height:2px;background:var(--ink);border-radius:2px;transition:.3s}
+
+/* MOBILE DRAWER */
+.drawer{display:none;position:fixed;inset:0;z-index:300;background:var(--white);flex-direction:column;padding:28px;transform:translateX(100%);transition:transform .35s var(--ease)}
+.drawer.open{transform:translateX(0)}
+.drawer-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:32px}
+.drawer-close{background:none;border:none;font-size:1.5rem;cursor:pointer;color:var(--ink)}
+.drawer-links{list-style:none;display:flex;flex-direction:column;gap:2px}
+.drawer-links a{display:block;padding:14px 16px;border-radius:10px;text-decoration:none;color:var(--ink);font-weight:500;font-size:1.05rem;transition:background .18s}
+.drawer-links a:hover{background:#f6f5f3}
+.drawer-links .d-cta{color:var(--honey-dark);font-weight:700}
+
+/* BEE CANVAS */
+#bees{position:fixed;inset:0;pointer-events:none;z-index:0;opacity:.3}
+
+/* HERO */
+.hero{min-height:100svh;display:flex;align-items:center;padding:140px 28px 90px;position:relative;overflow:hidden;background:linear-gradient(150deg,var(--honey-pale) 0%,#fefcf8 40%,var(--sky-pale) 100%)}
+.hero::before{content:'';position:absolute;top:-15%;right:-8%;width:650px;height:650px;border-radius:50%;background:radial-gradient(circle at center,rgba(245,158,11,.13),transparent 68%);animation:orb 8s ease-in-out infinite}
+.hero::after{content:'';position:absolute;bottom:-15%;left:-8%;width:500px;height:500px;border-radius:50%;background:radial-gradient(circle at center,rgba(14,165,233,.1),transparent 68%);animation:orb 10s ease-in-out infinite reverse}
+.hero-grid{max-width:1180px;margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center;position:relative;z-index:1}
+.hero-pill{display:inline-flex;align-items:center;gap:7px;background:rgba(245,158,11,.12);border:1px solid rgba(245,158,11,.28);color:#92400e;font-size:.78rem;font-weight:700;padding:5px 14px;border-radius:99px;margin-bottom:22px;animation:fadeUp .6s var(--ease) both}
+.hero h1{font-family:var(--font-d);font-size:clamp(2.3rem,4.8vw,3.8rem);font-weight:900;line-height:1.08;color:var(--ink);animation:fadeUp .65s var(--ease) .08s both}
+.hero h1 em{font-style:normal;background:linear-gradient(130deg,var(--honey),var(--honey-dark));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hero-sub{margin-top:18px;font-size:1.07rem;color:var(--ink-mid);max-width:480px;animation:fadeUp .65s var(--ease) .16s both}
+
+/* LIVE DEMO */
+.demo-wrap{margin-top:32px;animation:fadeUp .65s var(--ease) .24s both}
+.demo-label{font-size:.83rem;font-weight:600;color:var(--ink-mid);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.demo-label::before{content:'✦';color:var(--honey)}
+.demo-row{display:flex;border-radius:13px;overflow:hidden;box-shadow:var(--shadow-lg);max-width:460px}
+.demo-row input{flex:1;padding:15px 18px;font-size:.97rem;font-family:var(--font-b);border:2px solid transparent;outline:none;background:var(--white);color:var(--ink);transition:border-color .2s}
+.demo-row input:focus{border-color:var(--sky)}
+.demo-row input::placeholder{color:#a0aec0}
+.demo-btn{padding:15px 22px;background:var(--honey);color:var(--white);border:none;font-size:.9rem;font-weight:700;cursor:pointer;font-family:var(--font-b);transition:background .2s;white-space:nowrap}
+.demo-btn:hover{background:var(--honey-dark)}
+.demo-preview{margin-top:14px;font-size:.87rem;line-height:1.65;color:var(--ink-mid);border-left:3px solid var(--honey);padding:10px 14px;background:rgba(245,158,11,.05);border-radius:0 8px 8px 0;display:none;font-style:italic;max-width:460px}
+.demo-preview .dn{font-style:normal;color:var(--honey-dark);font-weight:700}
+.cursor{display:inline-block;width:2px;height:.9em;background:var(--honey);vertical-align:text-bottom;margin-left:1px;animation:blink .7s step-end infinite}
+.hero-trust{margin-top:22px;display:flex;align-items:center;gap:12px;font-size:.83rem;color:var(--ink-soft);animation:fadeUp .65s var(--ease) .32s both}
+.avatars{display:flex}
+.av{width:30px;height:30px;border-radius:50%;background:linear-gradient(135deg,#fde68a,#fbbf24);border:2px solid var(--white);margin-right:-9px;display:flex;align-items:center;justify-content:center;font-size:.85rem}
+
+/* STORY CARD */
+.card-side{display:flex;justify-content:center;align-items:center;animation:fadeUp .8s var(--ease) .15s both}
+.story-card{background:var(--white);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);padding:28px;width:100%;max-width:380px;border:1px solid rgba(245,158,11,.14);animation:cardFloat 5.5s ease-in-out infinite;position:relative}
+.story-card::before{content:'';position:absolute;inset:-1px;border-radius:calc(var(--r-xl) + 1px);z-index:-1;background:linear-gradient(135deg,rgba(245,158,11,.18),rgba(14,165,233,.08))}
+.sc-meta{font-size:.73rem;font-weight:600;color:var(--ink-soft);text-transform:uppercase;letter-spacing:.06em;margin-bottom:5px}
+.sc-title{font-family:var(--font-d);font-weight:700;font-size:1.1rem;color:var(--ink);margin-bottom:12px;transition:all .3s}
+.sc-tags{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.sc-tag{font-size:.7rem;font-weight:600;padding:3px 10px;border-radius:99px;background:rgba(14,165,233,.08);color:#0369a1}
+.sc-excerpt{font-size:.875rem;line-height:1.7;color:var(--ink-mid);border-left:3px solid var(--honey);padding-left:13px;font-style:italic;margin-bottom:16px}
+.sc-excerpt strong{color:var(--honey-dark);font-style:normal;font-weight:700}
+.sc-bar{display:flex;align-items:center;gap:10px}
+.sc-progress{flex:1;height:5px;background:#f1f1ef;border-radius:99px;overflow:hidden}
+.sc-fill{height:100%;background:linear-gradient(90deg,var(--honey),var(--honey-dark));border-radius:99px;width:0;transition:width 1.6s var(--ease)}
+.sc-bees{font-size:.78rem;font-weight:700;color:#92400e;background:rgba(245,158,11,.1);padding:4px 10px;border-radius:99px}
+
+/* STATS */
+.stats{background:var(--ink);padding:36px 28px}
+.stats-grid{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:16px;text-align:center}
+.stat{position:relative}
+.stat:not(:last-child)::after{content:'';position:absolute;right:0;top:20%;height:60%;width:1px;background:rgba(255,255,255,.09)}
+.stat-n{font-family:var(--font-d);font-size:2.1rem;font-weight:900;color:var(--honey);display:block;line-height:1}
+.stat-l{font-size:.78rem;color:#64748b;margin-top:4px;font-weight:500}
+
+/* SECTIONS */
+.sec{padding:100px 28px}
+.sec-in{max-width:1180px;margin:0 auto}
+.sec-eyebrow{display:inline-flex;align-items:center;gap:7px;font-size:.75rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sky);margin-bottom:10px}
+.sec-eyebrow::before{content:'';width:18px;height:2px;background:var(--sky);display:block}
+.sec-h{font-family:var(--font-d);font-size:clamp(1.9rem,4vw,2.9rem);font-weight:900;line-height:1.12;color:var(--ink);max-width:640px}
+.sec-sub{color:var(--ink-mid);font-size:1rem;max-width:540px;margin-top:12px}
+
+/* REVEAL */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv.on{opacity:1;transform:none}
+.rv-l{opacity:0;transform:translateX(-24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv-l.on{opacity:1;transform:none}
+.rv-r{opacity:0;transform:translateX(24px);transition:opacity .7s var(--ease),transform .7s var(--ease)}
+.rv-r.on{opacity:1;transform:none}
+
+/* HOW IT WORKS */
+.bg-off{background:var(--off)}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;margin-top:60px;position:relative}
+.steps::before{content:'';position:absolute;top:34px;left:calc(12.5% + 18px);right:calc(12.5% + 18px);height:2px;background:linear-gradient(90deg,var(--honey),var(--sky));border-radius:2px}
+.step{text-align:center;padding:0 14px}
+.step-ico{width:68px;height:68px;border-radius:50%;margin:0 auto 18px;background:linear-gradient(135deg,#fffbeb,#fef3c7);border:3px solid var(--honey);display:flex;align-items:center;justify-content:center;font-size:1.7rem;position:relative;z-index:1;transition:transform .3s,box-shadow .3s}
+.step:hover .step-ico{transform:scale(1.1) translateY(-5px);box-shadow:0 10px 28px rgba(245,158,11,.28)}
+.step-n{position:absolute;top:-6px;right:-6px;width:20px;height:20px;border-radius:50%;background:var(--honey);color:var(--white);font-size:.66rem;font-weight:800;display:flex;align-items:center;justify-content:center}
+.step h3{font-family:var(--font-d);font-weight:700;font-size:1rem;color:var(--ink);margin-bottom:7px}
+.step p{font-size:.86rem;color:var(--ink-mid);line-height:1.65}
+
+/* FEATURES */
+.feats{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:58px}
+.feat{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;transition:all .3s var(--ease);position:relative;overflow:hidden;cursor:default}
+.feat::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(245,158,11,.04),rgba(14,165,233,.04));opacity:0;transition:opacity .3s}
+.feat:hover{transform:translateY(-5px);box-shadow:var(--shadow-lg);border-color:rgba(245,158,11,.3)}
+.feat:hover::after{opacity:1}
+.feat-ico{width:50px;height:50px;border-radius:13px;background:linear-gradient(135deg,#fffbeb,#fef3c7);display:flex;align-items:center;justify-content:center;font-size:1.35rem;margin-bottom:15px;transition:transform .3s}
+.feat:hover .feat-ico{transform:scale(1.1) rotate(-6deg)}
+.feat h3{font-family:var(--font-d);font-weight:700;font-size:.97rem;color:var(--ink);margin-bottom:7px}
+.feat p{font-size:.86rem;color:var(--ink-mid);line-height:1.65}
+
+/* PRICING */
+.prices{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:58px;align-items:start}
+.price-card{background:var(--white);border:2px solid var(--border);border-radius:var(--r-lg);padding:30px;transition:all .3s var(--ease);position:relative}
+.price-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-4px)}
+.price-pop{border-color:var(--honey);background:linear-gradient(160deg,#fffbeb,var(--white))}
+.pop-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--honey);color:var(--white);font-size:.72rem;font-weight:800;padding:5px 16px;border-radius:99px;text-transform:uppercase;letter-spacing:.05em;white-space:nowrap}
+.price-tier{font-size:.78rem;font-weight:700;text-transform:uppercase;letter-spacing:.08em;color:var(--ink-soft)}
+.price-val{font-family:var(--font-d);font-size:2.7rem;font-weight:900;color:var(--ink);margin:7px 0 3px;line-height:1}
+.price-val sub{font-size:1rem;font-weight:400;color:var(--ink-soft)}
+.price-desc{font-size:.83rem;color:var(--ink-soft);margin-bottom:22px;padding-bottom:22px;border-bottom:1px solid var(--border)}
+.price-list{list-style:none;display:flex;flex-direction:column;gap:9px;margin-bottom:26px}
+.price-list li{display:flex;align-items:flex-start;gap:9px;font-size:.86rem;color:var(--ink-mid)}
+.price-list li::before{content:'✓';color:var(--honey);font-weight:800;flex-shrink:0}
+.price-btn{display:block;width:100%;padding:13px;text-align:center;border-radius:11px;font-weight:700;font-size:.93rem;text-decoration:none;transition:all .2s;cursor:pointer;border:none;font-family:var(--font-b)}
+.pb-fill{background:var(--honey);color:var(--white)}
+.pb-fill:hover{background:var(--honey-dark);box-shadow:0 5px 18px rgba(245,158,11,.4);transform:translateY(-1px)}
+.pb-line{background:#f5f4f1;color:var(--ink)}
+.pb-line:hover{background:#eeede9}
+
+/* TESTIMONIALS */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px;margin-top:58px}
+.testi{background:var(--white);border:1px solid var(--border);border-radius:var(--r-lg);padding:26px;transition:all .3s}
+.testi:hover{transform:translateY(-4px);box-shadow:var(--shadow-md)}
+.stars{color:var(--honey);font-size:.95rem;letter-spacing:2px;margin-bottom:14px}
+.testi-q{font-size:.88rem;color:var(--ink-mid);line-height:1.72;margin-bottom:18px;font-style:italic}
+.testi-who{display:flex;align-items:center;gap:11px}
+.testi-av{width:40px;height:40px;border-radius:50%;flex-shrink:0;background:linear-gradient(135deg,var(--honey),var(--sky));display:flex;align-items:center;justify-content:center;font-size:1.05rem}
+.testi-name{font-weight:700;font-size:.88rem;color:var(--ink)}
+.testi-role{font-size:.76rem;color:var(--ink-soft);margin-top:1px}
+
+/* SCHOOLS */
+.schools-sec{background:linear-gradient(145deg,#0a0f1e,#131c31);padding:100px 28px}
+.school-in{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:72px;align-items:center}
+.school-eye{color:#7dd3fc}
+.school-eye::before{background:#7dd3fc}
+.school-h{color:var(--white)}
+.school-sub{color:#94a3b8}
+.badges{display:flex;flex-wrap:wrap;gap:9px;margin-top:26px}
+.badge{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.13);color:#e2e8f0;font-size:.8rem;font-weight:600;padding:7px 15px;border-radius:99px;display:flex;align-items:center;gap:6px}
+.badge::before{content:'✓';color:#4ade80}
+.school-cta{display:inline-flex;align-items:center;gap:7px;background:var(--honey);color:var(--white);padding:13px 26px;border-radius:11px;font-weight:700;text-decoration:none;margin-top:26px;transition:all .2s}
+.school-cta:hover{background:var(--honey-dark);transform:translateY(-2px);box-shadow:0 8px 22px rgba(245,158,11,.38)}
+.metrics-card{background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.09);border-radius:var(--r-lg);padding:30px;backdrop-filter:blur(12px)}
+.metrics-card h3{color:var(--white);font-family:var(--font-d);font-weight:700;font-size:1.15rem;margin-bottom:18px}
+.metric{padding:13px 0;border-bottom:1px solid rgba(255,255,255,.05)}
+.metric:last-child{border-bottom:none}
+.metric-top{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:7px}
+.metric-lbl{color:#94a3b8;font-size:.85rem}
+.metric-val{color:var(--white);font-weight:700}
+.metric-bar{height:4px;background:rgba(255,255,255,.08);border-radius:2px;overflow:hidden}
+.metric-fill{height:100%;background:linear-gradient(90deg,var(--honey),var(--sky));border-radius:2px;width:0;transition:width 1.5s var(--ease)}
+
+/* INTEREST FORM */
+.form-sec{background:linear-gradient(150deg,var(--honey-pale),#fefcf8 50%,var(--sky-pale));padding:100px 28px;position:relative;overflow:hidden}
+.form-sec::before{content:'';position:absolute;top:-20%;right:-10%;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(245,158,11,.08),transparent 68%)}
+.form-in{max-width:740px;margin:0 auto;text-align:center;position:relative;z-index:1}
+.form-card{background:var(--white);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);padding:48px 44px;border:1px solid rgba(245,158,11,.14);text-align:left;margin-top:38px}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px}
+.fg{display:flex;flex-direction:column;gap:5px}
+.fg.full{grid-column:1/-1}
+.fg label{font-size:.83rem;font-weight:600;color:var(--ink)}
+.req{color:var(--honey)}
+.fi,.fs,.ft{padding:12px 15px;border:2px solid var(--border);border-radius:10px;font-size:.93rem;font-family:var(--font-b);color:var(--ink);background:var(--white);outline:none;transition:all .2s;width:100%}
+.fi:focus,.fs:focus,.ft:focus{border-color:var(--honey);box-shadow:0 0 0 4px rgba(245,158,11,.1)}
+.fs{cursor:pointer;appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' fill='none' viewBox='0 0 24 24' stroke='%2394a3b8'%3E%3Cpath stroke-linecap='round' stroke-linejoin='round' stroke-width='2' d='M19 9l-7 7-7-7'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:15px;padding-right:38px}
+.ft{resize:vertical;min-height:96px;line-height:1.6}
+.cb-row{display:flex;align-items:flex-start;gap:9px}
+.cb{width:17px;height:17px;accent-color:var(--honey);cursor:pointer;flex-shrink:0;margin-top:2px}
+.cb-lbl{font-size:.83rem;color:var(--ink-mid);line-height:1.55}
+.cb-lbl a{color:var(--sky)}
+.sub-btn{width:100%;padding:15px;background:var(--honey);color:var(--white);border:none;border-radius:11px;font-size:.97rem;font-weight:700;font-family:var(--font-b);cursor:pointer;transition:all .25s var(--ease);margin-top:6px}
+.sub-btn:hover{background:var(--honey-dark);transform:translateY(-2px);box-shadow:0 8px 26px rgba(245,158,11,.38)}
+
+/* SUCCESS BANNER */
+.success-banner{display:none;background:var(--white);border-radius:var(--r-xl);box-shadow:var(--shadow-lg);padding:56px 44px;border:1px solid rgba(245,158,11,.14);text-align:center;margin-top:38px}
+.success-banner.show{display:block}
+.ok-ico{font-size:3.2rem;display:block;margin-bottom:14px;animation:bounceIn .6s var(--ease)}
+.success-banner h3{font-family:var(--font-d);font-weight:900;font-size:1.6rem;color:var(--ink);margin-bottom:8px}
+.success-banner p{color:var(--ink-mid);font-size:.93rem}
+
+/* FINAL CTA */
+.cta-sec{background:var(--ink);text-align:center;padding:100px 28px}
+.cta-in{max-width:620px;margin:0 auto}
+.cta-bee{font-size:2.8rem;display:block;margin-bottom:14px;animation:bee-bob 3.5s ease-in-out infinite}
+.cta-sec h2{font-family:var(--font-d);font-weight:900;font-size:clamp(1.9rem,4vw,3rem);color:var(--white);margin-bottom:10px}
+.cta-sec p{color:#94a3b8;font-size:1rem;margin-bottom:30px}
+.cta-btns{display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn-a{background:var(--honey);color:var(--white);padding:14px 30px;border-radius:11px;font-weight:700;font-size:.97rem;text-decoration:none;transition:all .2s}
+.btn-a:hover{background:var(--honey-dark);transform:translateY(-2px);box-shadow:0 8px 26px rgba(245,158,11,.42)}
+.btn-b{background:transparent;color:var(--white);padding:14px 30px;border-radius:11px;font-weight:700;font-size:.97rem;text-decoration:none;border:2px solid rgba(255,255,255,.22);transition:all .2s}
+.btn-b:hover{border-color:rgba(255,255,255,.55);background:rgba(255,255,255,.05)}
+.cta-note{margin-top:14px;font-size:.78rem;color:#475569}
+
+/* FOOTER */
+.foot{background:#060b15;padding:60px 28px 32px}
+.foot-in{max-width:1180px;margin:0 auto}
+.foot-grid{display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:44px;padding-bottom:40px;border-bottom:1px solid rgba(255,255,255,.05)}
+.foot-brand{display:flex;align-items:center;gap:9px;color:var(--white);font-family:var(--font-d);font-weight:900;font-size:1.1rem;margin-bottom:13px}
+.foot-desc{font-size:.83rem;color:#475569;line-height:1.7;max-width:260px}
+.foot-h{color:var(--white);font-size:.82rem;font-weight:700;text-transform:uppercase;letter-spacing:.05em;margin-bottom:14px}
+.foot-ul{list-style:none;display:flex;flex-direction:column;gap:7px}
+.foot-ul a{color:#475569;text-decoration:none;font-size:.83rem;transition:color .2s}
+.foot-ul a:hover{color:var(--honey)}
+.foot-btm{display:flex;justify-content:space-between;align-items:center;padding-top:22px;flex-wrap:wrap;gap:10px}
+.foot-copy{color:#334155;font-size:.78rem}
+.foot-legal{display:flex;gap:18px}
+.foot-legal a{color:#334155;text-decoration:none;font-size:.78rem;transition:color .2s}
+.foot-legal a:hover{color:var(--white)}
+
+/* KEYFRAMES */
+@keyframes fadeUp{from{opacity:0;transform:translateY(22px)}to{opacity:1;transform:none}}
+@keyframes bee-bob{0%,100%{transform:translateY(0)}50%{transform:translateY(-9px)}}
+@keyframes cardFloat{0%,100%{transform:rotate(-1deg) translateY(0)}50%{transform:rotate(1deg) translateY(-10px)}}
+@keyframes orb{0%,100%{opacity:.7;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+@keyframes bounceIn{0%{transform:scale(.4);opacity:0}70%{transform:scale(1.12)}100%{transform:scale(1);opacity:1}}
+
+/* RESPONSIVE */
+@media(max-width:960px){
+  .hero-grid{grid-template-columns:1fr;text-align:center;gap:0}
+  .hero-sub,.demo-row,.demo-preview{max-width:100%}
+  .demo-label,.hero-trust{justify-content:center}
+  .card-side{display:none}
+  .stats-grid{grid-template-columns:repeat(3,1fr)}
+  .stat:nth-child(3)::after{display:none}
+  .steps{grid-template-columns:repeat(2,1fr);gap:32px}
+  .steps::before{display:none}
+  .feats{grid-template-columns:repeat(2,1fr)}
+  .prices{grid-template-columns:1fr}
+  .testi-grid{grid-template-columns:1fr}
+  .school-in{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr 1fr}
+  .form-grid{grid-template-columns:1fr}
+  .fg.full{grid-column:1}
+  .form-card,.success-banner{padding:32px 24px}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .burger{display:flex}
+  .stats-grid{grid-template-columns:repeat(2,1fr)}
+  .stat:nth-child(2)::after{display:none}
+  .steps{grid-template-columns:1fr}
+  .feats{grid-template-columns:1fr}
+  .foot-grid{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<canvas id="bees" aria-hidden="true"></canvas>
+
+<!-- NAV -->
+<nav class="nav" id="nav">
+  <div class="nav-wrap">
+    <a href="#" class="logo"><span class="logo-bee">🐝</span> TaleBuzzer</a>
+    <ul class="nav-links">
+      <li><a href="#how">How It Works</a></li>
+      <li><a href="#features">Features</a></li>
+      <li><a href="#pricing">Pricing</a></li>
+      <li><a href="#schools">For Schools</a></li>
+      <li><a href="#interest" class="nav-cta">Register Interest →</a></li>
+    </ul>
+    <button class="burger" id="burger" aria-label="Open menu" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</nav>
+
+<!-- MOBILE DRAWER -->
+<div class="drawer" id="drawer" role="dialog" aria-modal="true">
+  <div class="drawer-top">
+    <span class="logo"><span class="logo-bee">🐝</span> TaleBuzzer</span>
+    <button class="drawer-close" id="drawer-close" aria-label="Close menu">✕</button>
+  </div>
+  <ul class="drawer-links">
+    <li><a href="#how"      onclick="closeDrawer()">How It Works</a></li>
+    <li><a href="#features" onclick="closeDrawer()">Features</a></li>
+    <li><a href="#pricing"  onclick="closeDrawer()">Pricing</a></li>
+    <li><a href="#schools"  onclick="closeDrawer()">For Schools</a></li>
+    <li><a href="#interest" onclick="closeDrawer()" class="d-cta">Register Interest →</a></li>
+  </ul>
+</div>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-grid">
+    <div>
+      <div class="hero-pill">🐝 Early Access — Join 4,800+ families</div>
+      <h1>Every child deserves to be the <em>hero</em> of their own story</h1>
+      <p class="hero-sub">TaleBuzzer turns your child's name, interests, and personality into a unique illustrated adventure in under 30 seconds — sparking a lifelong love of reading.</p>
+      <div class="demo-wrap">
+        <p class="demo-label">Type your child's name and see the magic</p>
+        <div class="demo-row">
+          <label for="demo-input" class="sr-only">Child's name</label>
+          <input id="demo-input" type="text" placeholder="e.g. Amara, Oliver, Zara…" maxlength="20" autocomplete="off" aria-label="Enter your child's name for a live story preview">
+          <button class="demo-btn" id="demo-btn">✨ Preview</button>
+        </div>
+        <div class="demo-preview" id="demo-preview" aria-live="polite" role="status"></div>
+      </div>
+      <div class="hero-trust">
+        <div class="avatars" aria-hidden="true">
+          <div class="av">👩</div><div class="av">👨</div><div class="av">👩</div><div class="av">👨</div>
+        </div>
+        <span>★★★★★ &nbsp;<strong>4,800+ families</strong> reading together this week</span>
+      </div>
+    </div>
+    <div class="card-side" aria-hidden="true">
+      <div class="story-card">
+        <div class="sc-meta">Age 7 · Illustrated Story · English</div>
+        <div class="sc-title" id="sc-title">Amara's Deep Ocean Adventure</div>
+        <div class="sc-tags">
+          <span class="sc-tag">🌊 Ocean</span>
+          <span class="sc-tag">📚 Age-appropriate</span>
+          <span class="sc-tag">🐝 Mining Bee</span>
+        </div>
+        <div class="sc-excerpt">
+          "<strong id="sc-name">Amara</strong> dove deeper than any explorer had ever dared, her faithful dolphin Splash by her side. The glowing coral whispered an ancient secret that only a brave girl like her could unlock…"
+        </div>
+        <div class="sc-bar">
+          <div class="sc-progress"><div class="sc-fill" id="sc-fill"></div></div>
+          <div class="sc-bees">🐝 +30 Bees</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats">
+  <div class="stats-grid">
+    <div class="stat"><span class="stat-n" data-target="50" data-suffix="K+">0</span><div class="stat-l">Stories Created</div></div>
+    <div class="stat"><span class="stat-n" data-target="4.8" data-suffix="★" data-dec="1">0</span><div class="stat-l">Average Rating</div></div>
+    <div class="stat"><span class="stat-n" data-target="10" data-suffix="">0</span><div class="stat-l">UK School Partners</div></div>
+    <div class="stat"><span class="stat-n" data-target="30" data-suffix="s">0</span><div class="stat-l">Generation Time</div></div>
+    <div class="stat"><span class="stat-n" id="stat-age">2–10</span><div class="stat-l">Age Range (years)</div></div>
+  </div>
+</div>
+
+<!-- HOW IT WORKS -->
+<section class="sec bg-off" id="how">
+  <div class="sec-in">
+    <div class="rv">
+      <div class="sec-eyebrow">How It Works</div>
+      <h2 class="sec-h">A personalised story in three simple steps</h2>
+      <p class="sec-sub">No writing skills needed. No waiting. Just your child's details and a sprinkle of AI magic.</p>
+    </div>
+    <div class="steps">
+      <div class="step rv" style="transition-delay:.08s"><div class="step-ico">👶<span class="step-n">1</span></div><h3>Tell us about your child</h3><p>Enter their name, age, and a favourite interest. Choose a story theme. Under a minute, no sign-up needed to preview.</p></div>
+      <div class="step rv" style="transition-delay:.16s"><div class="step-ico">✨<span class="step-n">2</span></div><h3>AI creates the story</h3><p>Our AI writes a unique, age-appropriate adventure with your child as the hero — vivid characters and a meaningful ending.</p></div>
+      <div class="step rv" style="transition-delay:.24s"><div class="step-ico">📖<span class="step-n">3</span></div><h3>Read, earn, and explore</h3><p>Your child reads, answers comprehension questions, and earns Bee points to unlock new adventures and accessories.</p></div>
+      <div class="step rv" style="transition-delay:.32s"><div class="step-ico">🐝<span class="step-n">4</span></div><h3>Watch the habit form</h3><p>Daily reading streaks, Bee rank promotions, and personalised reminders keep children coming back — without the bedtime fight.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- FEATURES -->
+<section class="sec" id="features">
+  <div class="sec-in">
+    <div class="rv">
+      <div class="sec-eyebrow">Features</div>
+      <h2 class="sec-h">Everything children need to fall in love with reading</h2>
+      <p class="sec-sub">Built for parents, designed for children, and trusted by UK primary schools.</p>
+    </div>
+    <div class="feats">
+      <div class="feat rv" style="transition-delay:.04s"><div class="feat-ico">🎭</div><h3>Your child is always the hero</h3><p>Every story is written around your child's name, appearance, and interests. Not a name-swap — a truly personalised adventure.</p></div>
+      <div class="feat rv" style="transition-delay:.08s"><div class="feat-ico">🐝</div><h3>Bee Reward System</h3><p>Children earn Bees for reading, answering questions, and maintaining streaks. Ten rank levels from Solitary Bee to Queen Bee.</p></div>
+      <div class="feat rv" style="transition-delay:.12s"><div class="feat-ico">🌍</div><h3>Bilingual stories</h3><p>Generate the same story in English and Spanish side by side. French coming soon. Cultural nuance preserved — not just translated.</p></div>
+      <div class="feat rv" style="transition-delay:.16s"><div class="feat-ico">📴</div><h3>Offline reading</h3><p>Stories download automatically on creation. Perfect for car journeys and places with no internet. Syncs Bees when you reconnect.</p></div>
+      <div class="feat rv" style="transition-delay:.20s"><div class="feat-ico">🧠</div><h3>Comprehension questions</h3><p>Three age-appropriate questions after every story — the only measurable literacy proof point, visible in your parent dashboard.</p></div>
+      <div class="feat rv" style="transition-delay:.24s"><div class="feat-ico">♿</div><h3>SEN-friendly mode</h3><p>OpenDyslexic font, high-contrast display, and natural-voice narration enabled by default for SEN profiles.</p></div>
+      <div class="feat rv" style="transition-delay:.28s"><div class="feat-ico">📊</div><h3>Parent dashboard</h3><p>See exactly what your child has read, words encountered, and how comprehension is improving — week by week.</p></div>
+      <div class="feat rv" style="transition-delay:.32s"><div class="feat-ico">🔒</div><h3>Child PIN mode</h3><p>Your child gets their own locked reading screen with a 4-digit PIN. No access to billing, settings, or your account — ever.</p></div>
+      <div class="feat rv" style="transition-delay:.36s"><div class="feat-ico">🎁</div><h3>Story gift cards</h3><p>Give the gift of a personalised story experience. No account needed to purchase. Perfect for birthdays and celebrations.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section class="sec bg-off" id="pricing">
+  <div class="sec-in">
+    <div class="rv" style="text-align:center">
+      <div class="sec-eyebrow" style="justify-content:center">Pricing</div>
+      <h2 class="sec-h" style="max-width:100%;text-align:center">Simple, honest pricing</h2>
+      <p class="sec-sub" style="max-width:100%;text-align:center;margin:12px auto 0">Start free. No credit card needed. Upgrade when you are ready.</p>
+    </div>
+    <div class="prices">
+      <div class="price-card rv-l">
+        <div class="price-tier">Free</div>
+        <div class="price-val">£0 <sub>/ forever</sub></div>
+        <p class="price-desc">3 stories to explore. No card required.</p>
+        <ul class="price-list"><li>3 lifetime stories</li><li>Text-only format</li><li>Name &amp; gender personalisation</li><li>Bee reward system</li><li>Parent dashboard</li></ul>
+        <button class="price-btn pb-line" onclick="document.getElementById('interest').scrollIntoView({behavior:'smooth'})">Get Started Free</button>
+      </div>
+      <div class="price-card price-pop rv" style="transition-delay:.08s">
+        <div class="pop-badge">Most Popular</div>
+        <div class="price-tier">Premium</div>
+        <div class="price-val">£15 <sub>/ month</sub></div>
+        <p class="price-desc">Or £90/year — save 2 months</p>
+        <ul class="price-list"><li>Unlimited illustrated stories</li><li>3 child profiles</li><li>Up to 3 supporting characters</li><li>English &amp; Spanish bilingual</li><li>Offline reading</li><li>Child PIN access mode</li><li>Weekly reading reports</li><li>SEN mode included</li></ul>
+        <button class="price-btn pb-fill" onclick="document.getElementById('interest').scrollIntoView({behavior:'smooth'})">Start 7-Day Free Trial</button>
+      </div>
+      <div class="price-card rv-r">
+        <div class="price-tier">Schools</div>
+        <div class="price-val">£120 <sub>/ year</sub></div>
+        <p class="price-desc">Per classroom · Site licence available</p>
+        <ul class="price-list"><li>Class-level story generation</li><li>Teacher &amp; admin dashboards</li><li>Comprehension reporting</li><li>Half-term impact report</li><li>DPA template included</li><li>Purchase order accepted</li><li>KCSIE compliant</li></ul>
+        <button class="price-btn pb-line" onclick="document.getElementById('schools').scrollIntoView({behavior:'smooth'})">Request School Trial</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section class="sec">
+  <div class="sec-in">
+    <div class="rv" style="text-align:center">
+      <div class="sec-eyebrow" style="justify-content:center">What Families Say</div>
+      <h2 class="sec-h" style="max-width:100%;text-align:center">The stories children actually want to re-read</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi rv-l"><div class="stars">★★★★★</div><p class="testi-q">"My daughter cried when she saw herself as the main character. She has read her story seven times this week and asked for another one before breakfast. Worth every penny."</p><div class="testi-who"><div class="testi-av">👩</div><div><div class="testi-name">Rachel M.</div><div class="testi-role">Parent · South London</div></div></div></div>
+      <div class="testi rv" style="transition-delay:.08s"><div class="stars">★★★★★</div><p class="testi-q">"I generated stories for all 28 children in my class in under ten minutes. The comprehension questions saved me two hours of lesson preparation that week."</p><div class="testi-who"><div class="testi-av">👨</div><div><div class="testi-name">Mr Osei</div><div class="testi-role">Year 3 Teacher · Bristol</div></div></div></div>
+      <div class="testi rv-r"><div class="stars">★★★★★</div><p class="testi-q">"My son has dyslexia and has always struggled with reading. The dyslexia-friendly font and read-aloud option changed everything. He now asks for his story at bedtime."</p><div class="testi-who"><div class="testi-av">👩</div><div><div class="testi-name">Priya S.</div><div class="testi-role">Parent · Manchester</div></div></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHOOLS -->
+<section class="schools-sec" id="schools">
+  <div class="school-in">
+    <div class="rv-l">
+      <div class="sec-eyebrow school-eye">For Schools &amp; Educators</div>
+      <h2 class="sec-h school-h">Personalised reading at classroom scale</h2>
+      <p class="sec-sub school-sub">30-day free trial. No credit card. No complex setup. A signed DPA within 24 hours. Purchase order payment accepted.</p>
+      <div class="badges">
+        <span class="badge">KCSIE Compliant</span><span class="badge">GDPR-UK Ready</span>
+        <span class="badge">Ofsted Evidence</span><span class="badge">DPA Template Included</span>
+        <span class="badge">Academic Year Billing</span>
+      </div>
+      <a href="#interest" class="school-cta">Request School Trial →</a>
+    </div>
+    <div class="rv-r">
+      <div class="metrics-card">
+        <h3>📊 Real class impact data</h3>
+        <div class="metric"><div class="metric-top"><span class="metric-lbl">Stories read per student / week</span><span class="metric-val">2.4 avg</span></div><div class="metric-bar"><div class="metric-fill" data-w="80"></div></div></div>
+        <div class="metric"><div class="metric-top"><span class="metric-lbl">Comprehension question accuracy</span><span class="metric-val">67%</span></div><div class="metric-bar"><div class="metric-fill" data-w="67"></div></div></div>
+        <div class="metric"><div class="metric-top"><span class="metric-lbl">Teacher dashboard weekly usage</span><span class="metric-val">85%</span></div><div class="metric-bar"><div class="metric-fill" data-w="85"></div></div></div>
+        <div class="metric"><div class="metric-top"><span class="metric-lbl">Trial-to-paid school conversion</span><span class="metric-val">70%</span></div><div class="metric-bar"><div class="metric-fill" data-w="70"></div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- INTEREST FORM -->
+<section class="form-sec" id="interest">
+  <div class="form-in">
+    <div class="rv">
+      <div class="sec-eyebrow" style="justify-content:center">Register Your Interest</div>
+      <h2 class="sec-h" style="text-align:center;max-width:100%">Be the first to know when we launch</h2>
+      <p class="sec-sub" style="text-align:center;margin:12px auto 0;max-width:500px">
+        TaleBuzzer is in early access. Register now and we will reach out personally with your invitation — along with an exclusive early-access offer.
+      </p>
+    </div>
+
+    <!-- SUCCESS BANNER — shown when page loads with ?success=1 -->
+    <div class="success-banner" id="success-banner">
+      <span class="ok-ico">🐝</span>
+      <h3>You are on the list!</h3>
+      <p>We will be in touch very soon with your personal early-access invite. Keep an eye on your inbox.</p>
+    </div>
+
+    <!-- FORM — Netlify detects this at build time via the netlify attribute -->
+    <div class="form-card" id="form-card">
+      <form
+        name="interest-form"
+        method="POST"
+        action="/success.html"
+        netlify
+        netlify-honeypot="bot-field"
+      >
+        <!-- Required hidden fields for Netlify Forms -->
+        <input type="hidden" name="form-name" value="interest-form">
+        <p style="display:none"><label>Do not fill this in if you are human: <input name="bot-field"></label></p>
+
+        <div class="form-grid">
+          <div class="fg">
+            <label for="fn">First name <span class="req">*</span></label>
+            <input class="fi" id="fn" name="first_name" type="text" placeholder="Your first name" autocomplete="given-name" required>
+          </div>
+          <div class="fg">
+            <label for="ln">Last name <span class="req">*</span></label>
+            <input class="fi" id="ln" name="last_name" type="text" placeholder="Your last name" autocomplete="family-name" required>
+          </div>
+          <div class="fg full">
+            <label for="em">Email address <span class="req">*</span></label>
+            <input class="fi" id="em" name="email" type="email" placeholder="you@example.com" autocomplete="email" required>
+          </div>
+          <div class="fg">
+            <label for="role">I am a <span class="req">*</span></label>
+            <select class="fs" id="role" name="role" required>
+              <option value="">Select your role…</option>
+              <option value="parent">Parent / Guardian</option>
+              <option value="teacher">Teacher</option>
+              <option value="school_admin">School Administrator</option>
+              <option value="gift_giver">Gift-giver (grandparent etc.)</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          <div class="fg">
+            <label for="age">Children's age range</label>
+            <select class="fs" id="age" name="children_age">
+              <option value="">Select age range…</option>
+              <option value="2-4">2–4 years</option>
+              <option value="5-7">5–7 years</option>
+              <option value="8-10">8–10 years</option>
+              <option value="mixed">Mixed ages</option>
+              <option value="na">Not applicable</option>
+            </select>
+          </div>
+          <div class="fg full">
+            <label for="msg">What interests you most about TaleBuzzer?</label>
+            <textarea class="ft" id="msg" name="interest" placeholder="Tell us what brought you here — personalised stories, the reading habit, school use, or something else…"></textarea>
+          </div>
+          <div class="fg full">
+            <div class="cb-row">
+              <input class="cb" type="checkbox" id="consent-email" name="consent_email" value="yes">
+              <label class="cb-lbl" for="consent-email">I am happy for TaleBuzzer to contact me by email about early access, product updates, and launch offers. You can unsubscribe at any time.</label>
+            </div>
+          </div>
+          <div class="fg full">
+            <div class="cb-row">
+              <input class="cb" type="checkbox" id="consent-terms" name="consent_terms" value="yes" required>
+              <label class="cb-lbl" for="consent-terms">I have read and agree to the <a href="#">Privacy Policy</a> and <a href="#">Terms of Service</a>. <span class="req">*</span></label>
+            </div>
+          </div>
+        </div>
+
+        <button type="submit" class="sub-btn">Register My Interest 🐝</button>
+        <p style="font-size:.75rem;color:#94a3b8;text-align:center;margin-top:10px">Your data is handled in line with GDPR-UK. We will never share your details with third parties.</p>
+      </form>
+    </div>
+
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-sec">
+  <div class="cta-in">
+    <span class="cta-bee">🐝</span>
+    <h2>Start your child's first adventure today</h2>
+    <p>Three free stories. No credit card. See the look on their face when they are the hero.</p>
+    <div class="cta-btns">
+      <a href="#interest" class="btn-a">✨ Create Free Story</a>
+      <a href="#how" class="btn-b">▶ See How It Works</a>
+    </div>
+    <p class="cta-note">No credit card required · Cancel any time · COPPA &amp; GDPR-UK compliant</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer class="foot">
+  <div class="foot-in">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-brand"><span>🐝</span> TaleBuzzer</div>
+        <p class="foot-desc">AI-powered personalised stories that turn every child into the hero of their own adventure. Building lifelong readers, one story at a time.</p>
+      </div>
+      <div>
+        <div class="foot-h">Product</div>
+        <ul class="foot-ul"><li><a href="#how">How It Works</a></li><li><a href="#features">Features</a></li><li><a href="#pricing">Pricing</a></li><li><a href="#">Story Gallery</a></li><li><a href="#">Gift Cards</a></li></ul>
+      </div>
+      <div>
+        <div class="foot-h">Schools</div>
+        <ul class="foot-ul"><li><a href="#">For Teachers</a></li><li><a href="#">For Administrators</a></li><li><a href="#schools">Free School Trial</a></li><li><a href="#">KCSIE Statement</a></li><li><a href="#">DPA Template</a></li></ul>
+      </div>
+      <div>
+        <div class="foot-h">Company</div>
+        <ul class="foot-ul"><li><a href="#">About</a></li><li><a href="#">Blog</a></li><li><a href="#">Privacy Policy</a></li><li><a href="#">Terms of Service</a></li><li><a href="#">Contact</a></li></ul>
+      </div>
+    </div>
+    <div class="foot-btm">
+      <span class="foot-copy">© 2026 TaleBuzzer Ltd. All rights reserved.</span>
+      <div class="foot-legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Cookies</a><a href="#">GDPR</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* NAV */
+const nav = document.getElementById('nav');
+window.addEventListener('scroll',()=>nav.classList.toggle('stuck',window.scrollY>60),{passive:true});
+
+/* MOBILE DRAWER */
+const burger=document.getElementById('burger'),drawer=document.getElementById('drawer'),drawerClose=document.getElementById('drawer-close');
+function openDrawer(){drawer.style.display='flex';requestAnimationFrame(()=>drawer.classList.add('open'));burger.setAttribute('aria-expanded','true');document.body.style.overflow='hidden'}
+function closeDrawer(){drawer.classList.remove('open');setTimeout(()=>{drawer.style.display='none'},350);burger.setAttribute('aria-expanded','false');document.body.style.overflow=''}
+burger.addEventListener('click',openDrawer);
+drawerClose.addEventListener('click',closeDrawer);
+drawer.addEventListener('click',e=>{if(e.target===drawer)closeDrawer()});
+
+/* BEE CANVAS */
+if(!window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+(function(){
+  const c=document.getElementById('bees'),ctx=c.getContext('2d');
+  let bees=[],W,H;
+  function resize(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}
+  resize();
+  window.addEventListener('resize',resize,{passive:true});
+  function mkBee(){return{x:Math.random()*W,y:Math.random()*H,size:9+Math.random()*7,vx:(Math.random()-.5)*.55,vy:(Math.random()-.5)*.55,angle:Math.random()*Math.PI*2,spin:(Math.random()-.5)*.018,opacity:.2+Math.random()*.35}}
+  for(let i=0;i<20;i++)bees.push(mkBee());
+  function draw(){
+    ctx.clearRect(0,0,W,H);
+    bees.forEach(b=>{
+      ctx.save();ctx.translate(b.x,b.y);ctx.rotate(b.angle);ctx.globalAlpha=b.opacity;
+      ctx.font=`${b.size}px serif`;ctx.textAlign='center';ctx.textBaseline='middle';
+      ctx.fillText('🐝',0,0);ctx.restore();
+      b.x+=b.vx;b.y+=b.vy;b.angle+=b.spin;
+      if(b.x<-40)b.x=W+40;if(b.x>W+40)b.x=-40;
+      if(b.y<-40)b.y=H+40;if(b.y>H+40)b.y=-40;
+    });
+    requestAnimationFrame(draw);
+  }
+  draw();
+  })();
+}
+
+/* STORY CARD FILL */
+setTimeout(()=>{const f=document.getElementById('sc-fill');if(f)f.style.width='73%'},600);
+
+/* LIVE HERO DEMO */
+const excerpts=[
+  n=>`"<span class='dn'>${n}</span> stepped through the ancient door and gasped — a whole hidden kingdom waited, and a golden dragon bowed its head. Only someone as brave as <span class='dn'>${n}</span> had ever made it this far…"`,
+  n=>`"With one mighty leap, <span class='dn'>${n}</span> soared above the clouds. The stars cheered. The moon waved. Nobody in the universe had ever been this extraordinary before…"`,
+  n=>`"The enchanted library had been locked for a hundred years — until <span class='dn'>${n}</span> arrived. The books flew open on their own, every page whispering the same name…"`,
+  n=>`"Deep in the jungle, an ancient mystery waited. Every explorer had failed — until <span class='dn'>${n}</span> noticed the tiny golden bee and followed it straight to the treasure…"`,
+];
+let demoT;
+const demoInput=document.getElementById('demo-input'),demoPreview=document.getElementById('demo-preview'),demoBtn=document.getElementById('demo-btn'),scTitle=document.getElementById('sc-title'),scName=document.getElementById('sc-name');
+function runDemo(raw){
+  if(!raw.trim())return;
+  const safe=raw.trim().replace(/[<>&"']/g,'');const n=safe.charAt(0).toUpperCase()+safe.slice(1);
+  demoPreview.innerHTML=excerpts[Math.floor(Math.random()*excerpts.length)](n)+'<span class="cursor"></span>';
+  demoPreview.style.display='block';
+  if(scTitle)scTitle.textContent=`${n}'s Amazing Adventure`;
+  if(scName)scName.textContent=n;
+}
+demoBtn.addEventListener('click',()=>runDemo(demoInput.value));
+demoInput.addEventListener('keydown',e=>{if(e.key==='Enter')runDemo(demoInput.value)});
+demoInput.addEventListener('input',()=>{clearTimeout(demoT);if(demoInput.value.trim().length>1)demoT=setTimeout(()=>runDemo(demoInput.value),400)});
+
+/* SCROLL REVEALS */
+const revObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('on');revObs.unobserve(e.target)}})},{threshold:.12});
+document.querySelectorAll('.rv,.rv-l,.rv-r').forEach(el=>revObs.observe(el));
+
+/* ANIMATED COUNTERS */
+const cntObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(!e.isIntersecting)return;
+    const el=e.target,target=parseFloat(el.dataset.target),suffix=el.dataset.suffix||'',dec=parseInt(el.dataset.dec||'0'),dur=1800,t0=performance.now();
+    (function tick(now){const p=Math.min((now-t0)/dur,1),ease=1-Math.pow(1-p,3);el.textContent=(dec>0?(ease*target).toFixed(dec):Math.floor(ease*target))+suffix;if(p<1)requestAnimationFrame(tick)})(t0);
+    cntObs.unobserve(el);
+  });
+},{threshold:.5});
+document.querySelectorAll('.stat-n[data-target]').forEach(el=>cntObs.observe(el));
+
+/* METRIC BARS */
+const barObs=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(!e.isIntersecting)return;e.target.querySelectorAll('.metric-fill[data-w]').forEach(b=>{setTimeout(()=>{b.style.width=b.dataset.w+'%'},150)});barObs.unobserve(e.target)});
+},{threshold:.3});
+document.querySelectorAll('.metrics-card').forEach(el=>barObs.observe(el));
+
+/* NETLIFY FORM SUCCESS — detects redirect back from success.html via query param */
+/* Form action is /success.html — Netlify redirects there after submission */
+/* No JS needed for success detection — success.html is a standalone page */
+</script>
+</body>
+</html>
