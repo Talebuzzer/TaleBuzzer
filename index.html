@@ -519,7 +519,7 @@ body{font-family:var(--font-b);color:var(--ink);background:var(--white);overflow
       <form
         name="interest-form"
         method="POST"
-        action="/?success=1#interest"
+        action="/success.html"
         netlify
         netlify-honeypot="bot-field"
       >
@@ -712,12 +712,7 @@ const barObs=new IntersectionObserver(entries=>{
 },{threshold:.3});
 document.querySelectorAll('.metrics-card').forEach(el=>barObs.observe(el));
 
-/* SUCCESS BANNER — show if Netlify redirected back with ?success=1 */
-if(new URLSearchParams(window.location.search).get('success')==='1'){
-  document.getElementById('success-banner').classList.add('show');
-  document.getElementById('form-card').style.display='none';
-  setTimeout(()=>document.getElementById('interest').scrollIntoView({behavior:'smooth'}),100);
-}
+/* Form submits natively to Netlify — success page handles confirmation */
 </script>
 </body>
 </html>
